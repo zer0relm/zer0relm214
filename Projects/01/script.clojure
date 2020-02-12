@@ -1,0 +1,60 @@
+Script started on 2020-02-10 16:37:22-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ cat src/rectangle_Area.clj 
+;;;; calculates the area of a rectangle
+;;;;
+;;;; Input: lenght and width
+;;;; Output: the area of the rectangle
+;;;;
+;;;; Usage: clojure -m rectangle_Area
+;;;;
+;;;; By: AJ Vrieland
+;;;; Date: 02/10/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns rectangle_Area)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function computes the area of a rectangle.
+;;; Receive: itsLength and itsWidth, numbers
+;;; Precondition: itsLength and itsWidth >= 0.0
+;;; Return: the area of the given rectangle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn rectangleArea [itsLength itsWidth]
+  (* itsLength itsWidth)
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main
+;;; Input: the length and width of a rectangle
+;;; Output: the area of the given rectangle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (println "To compute the area of a rectangle,")
+  (print "enter its Length and Width: ") (flush)
+  (let 
+    [length (read) width (read)]
+    (print "\nThe area of the rectangle is ")
+    (print (rectangleArea length width))
+    (print "\n\n")
+    )
+  
+)
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ clojure -m c[Krectangle_Area
+To compute the area of a rectangle,
+enter its Length and Width: 5
+5
+
+The area of the rectangle is 25
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ clojure -m rectangle_Area
+To compute the area of a rectangle,
+enter its Length and Width: 5 124
+6
+
+The area of the rectangle is 744
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ exit
+
+Script done on 2020-02-10 16:38:10-0500

@@ -1,0 +1,233 @@
+Script started on 2020-02-10 16:35:34-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Ada[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Ada[00m$ cat rectangle_area.adb
+-- computes the area of a rectangle
+--
+-- Input: The length and width of the rectangle
+-- Precondition: length and width are positive
+-- Output: The are of the rectangle
+--
+-- By: AJ Vrieland
+-- Date: 02/10/2020
+------------------------------------------------
+
+with Ada.Text_IO, Ada.Float_text_IO;
+use Ada.Text_IO, Ada.Float_text_IO;
+
+procedure rectangle_area is
+	length, width, area : float;
+
+	-- function rectangleArea computes the rectangle's area
+	-- Parameter: l, w, a float
+	-- Precontion: l >= 0.0
+	-- Return: the area of the rectangle
+	-------------------------------------------------------
+	function rectangleArea(l, w: in float) return float is
+	begin
+		return l * w;
+	end rectangleArea;
+
+begin
+	New_Line;
+	Put_Line("To compute the area of a circle, ");
+	Put("enter its Length: ");
+	Get(length);
+	
+	Put("enter its Width: ");
+	Get(width);
+
+	area := rectangleArea(length, width);
+
+	New_Line;
+	Put("The rectangle's area is ");
+	Put(area, 1, 5, 0);
+	New_Line; New_Line;
+end rectangle_area;
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Ada[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Ada[00m$ .[Kgnatmake rectangle_area.adb 
+gnatmake: "rectangle_area" up to date.
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Ada[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Ada[00m$ ./rectangle_area 
+
+To compute the area of a circle, 
+enter its Length: 5
+enter its Width: 5
+
+The rectangle's area is 25.00000
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Ada[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Ada[00m$ ./rectangle_area 
+
+To compute the area of a circle, 
+enter its Length: 124
+enter its Width: 6
+
+The rectangle's area is 744.00000
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Ada[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Ada[00m$ exit
+
+Script done on 2020-02-10 16:36:09-0500
+Script started on 2020-02-10 16:37:22-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ cat src/rectangle_Area.clj 
+;;;; calculates the area of a rectangle
+;;;;
+;;;; Input: lenght and width
+;;;; Output: the area of the rectangle
+;;;;
+;;;; Usage: clojure -m rectangle_Area
+;;;;
+;;;; By: AJ Vrieland
+;;;; Date: 02/10/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns rectangle_Area)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function computes the area of a rectangle.
+;;; Receive: itsLength and itsWidth, numbers
+;;; Precondition: itsLength and itsWidth >= 0.0
+;;; Return: the area of the given rectangle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn rectangleArea [itsLength itsWidth]
+  (* itsLength itsWidth)
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main
+;;; Input: the length and width of a rectangle
+;;; Output: the area of the given rectangle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (println "To compute the area of a rectangle,")
+  (print "enter its Length and Width: ") (flush)
+  (let 
+    [length (read) width (read)]
+    (print "\nThe area of the rectangle is ")
+    (print (rectangleArea length width))
+    (print "\n\n")
+    )
+  
+)
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ clojure -m c[Krectangle_Area
+To compute the area of a rectangle,
+enter its Length and Width: 5
+5
+
+The area of the rectangle is 25
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ clojure -m rectangle_Area
+To compute the area of a rectangle,
+enter its Length and Width: 5 124
+6
+
+The area of the rectangle is 744
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/clojure[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/clojure[00m$ exit
+
+Script done on 2020-02-10 16:38:10-0500
+Script started on 2020-02-10 16:33:05-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Java[00m$ cat rectangleArea.java
+/* Computes the area of a give rectangle
+ *
+ * Input: The length and width. 
+ * Precondition: They are positive numbers
+ * Output: The area of the given rectangle
+ *
+ * By: AJ Vrieland
+ * Date: 02/10/2020
+ * ***************************************/
+
+import java.util.Scanner;
+
+public class rectangleArea {
+	/* function computes the area of a rectangle given length and width
+	 * Input: l & w
+	 * Precontion: l & w > 0
+	 * Output: area of rectangle
+	 */ 
+	public static double rectangleArea(double l, double w){
+		return l * w;
+	}
+
+	// main program
+	public static void main(String[] args) {
+		System.out.println("\n\nTo compute the area of a rectangle,");
+		// prompts for Length and puts in variable length
+		System.out.print("enter its Lenth: ");
+		Scanner keyboard1 = new Scanner(System.in);
+                double length =  keyboard1.nextDouble();
+		// prompts for Width and puts in variable width
+		System.out.print("enter its Width: ");
+		Scanner keyboard2 = new Scanner(System.in);
+		double width = keyboard2.nextDouble();
+		
+		// prints out the result of rectangleArea given length and width
+		System.out.println("\nThe area is " + rectangleArea(length, width) + "\n");
+	} //main program
+}//class rectangleArea
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Java[00m$ javac rectangleArea.java [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K-deprecation rectangleArea.javva 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Java[00m$ java rectangleArea 
+
+
+To compute the area of a rectangle,
+enter its Lenth: 5
+enter its Width: 5
+
+The area is 25.0
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Java[00m$ java rectangleArea 
+
+
+To compute the area of a rectangle,
+enter its Lenth: 124
+enter its Width: 6
+
+The area is 744.0
+
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/Java[00m$ exit
+
+Script done on 2020-02-10 16:34:19-0500
+Script started on 2020-02-10 16:39:11-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/ruby[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/ruby[00m$ cat rectangle_area.rb 
+#! /usr/bin/ruby
+#computes the area of a rectangle
+#
+#Input: the length and width of the rectangle
+#Precondition: length and width are both postive
+#Output: the area
+#
+#By: AJ Vrieland
+#Date: 02/10/2020
+#####################################################
+
+
+
+# Function rectangleArea takes in two numbers l and w and computes the area of the rectangle
+# Parameters: l, w, positive numbers
+# Precondition; l, w > 0
+# Returns: the area of the rectangle
+def rectangleArea(l, w)
+	l * w
+end
+
+if __FILE__ == $0
+	puts "To compute the area of a rectangle,"
+	print "enter its length: "
+	length = gets.chomp.to_f
+	print "enter its width: "
+	width = gets.chomp.to_f
+	print "The rectangle's area is: "
+	puts rectangleArea(length, width)
+end
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/ruby[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/ruby[00m$ ruby rectangle_area.rb 
+To compute the area of a rectangle,
+enter its length: 5
+enter its width: 5
+The rectangle's area is: 25.0
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/ruby[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/ruby[00m$ ruby rectangle_area.rb 
+To compute the area of a rectangle,
+enter its length: 124
+enter its width: 6
+The rectangle's area is: 744.0
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Projects/01/ruby[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Projects/01/ruby[00m$ exit
+
+Script done on 2020-02-10 16:39:39-0500

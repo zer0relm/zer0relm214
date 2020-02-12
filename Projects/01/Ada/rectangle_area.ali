@@ -1,0 +1,60 @@
+V "GNAT Lib v8"
+M P W=b
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV SPARK_05
+
+U rectangle_area%b	rectangle_area.adb	70f96b5f NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20170911084841 76789da1 ada%s
+D a-except.ads		20180111085525 291912d5 ada.exceptions%s
+D a-flteio.ads		20170908151217 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20170908151217 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180111085525 119b8fb3 ada.streams%s
+D a-tags.ads		20180111085525 491b781d ada.tags%s
+D a-textio.ads		20180111085525 881db35a ada.text_io%s
+D a-tiflio.ads		20180111085525 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180111085525 5ab55268 interfaces%s
+D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
+D rectangle_area.adb	20200210212925 196e9fa5 rectangle_area%b
+D system.ads		20180111085525 4635ec04 system%s
+D s-crtl.ads		20180111085525 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180111085525 54135002 system.exception_table%s
+D s-ficobl.ads		20180111085525 078245e4 system.file_control_block%s
+D s-parame.ads		20180111085525 f896c45c system.parameters%s
+D s-secsta.ads		20180111085525 283dec34 system.secondary_stack%s
+D s-soflin.ads		20180111085525 a7318a92 system.soft_links%s
+D s-stache.ads		20180111085525 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180111085525 09bd3940 system.standard_library%s
+D s-stoele.ads		20180111085525 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180111085525 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180111085525 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180111085525 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 12|11r6 11r19 12r5 12r18
+X 3 a-flteio.ads
+20K13*Float_Text_IO[8|46] 12|11w23 12r22
+X 7 a-textio.ads
+49K13*Text_IO 471e16 12|11w10 12r9
+166U14*New_Line 12|28s9 38s9 41s9 41s19
+242U14*Put 12|30s9 33s9 39s9
+263U14*Put_Line 12|29s9
+X 8 a-tiflio.ads
+57U14*Get 12|31s9[3|20] 34s9[3|20]
+68U14*Put 12|40s9[3|20]
+X 12 rectangle_area.adb
+14U11*rectangle_area 14b11 42l5 42t19
+15f9 length{float} 31m13 36r31
+15f17 width{float} 34m13 36r39
+15f24 area{float} 36m9 40r13
+22V18 rectangleArea{float} 22b18 22>32 22>35 25l13 25t26 36s17
+22f32 l{float} 24r24
+22f35 w{float} 24r28
+
