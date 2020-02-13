@@ -1,0 +1,18 @@
+Flex Example 1:
+	In the loop that starts on 765, it is scanning a file or input (the terminal) 
+Flex Example 2:
+	zer0relm : WORD
+	5292000 : NUMBER
+	_HI : _WORD
+
+Example 2 w/ Grammer update:
+	_hi : IDENTIFIER
+	_R2D2_ : IDENTIFIER
+	_____ : IDENTIFIER
+	Hi : WORD
+	12 : NUMBER
+Example 4: 
+	non-Terminals are in capital letters
+	
+	The returning statements after the commands are not specific for the command
+
