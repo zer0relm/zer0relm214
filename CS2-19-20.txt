@@ -1,0 +1,23 @@
+Readablility
+appropriate control structures
+descriptive identifiers
+White space
+flow of control is clear
+
+0 or more
+1 or more
+sequential exicusion
+One entry point; one exit point
+
+object
+
+the final expression in the sequence 
+
+progn
+final expression
+
+select/exicute one statement & ignore another
+
+ambigous grammer
+handled
+
