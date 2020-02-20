@@ -1,6 +1,9 @@
 /* YearCodes.java is a driver for function yearCode().
  *
  * Begun by: Prof. Adams, for CS 214 at Calvin College.
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 02/20/2020
  ****************************************************************/
 
 import java.util.Scanner;

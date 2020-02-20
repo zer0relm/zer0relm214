@@ -9,8 +9,8 @@
 ;;;; Usage: clojure -m year_codes
 ;;;;
 ;;;; Begun by: Prof. Adams, for CS 214 at Calvin College.
-;;;; Completed by:
-;;;; Date:
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 02/20/2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns year_codes)                    ; name the program
@@ -39,6 +39,28 @@
   )
 )
 
+;; solution using the cond function
+(defn yearCode2 [year]
+  (cond
+    (= year "freshman")  1
+    (= year "sophomore") 2
+    (= year "junior")    3
+    (= year "senior")    4
+    :else                0
+  )
+)
+
+;; solution using the case function
+(defn yearCode3 [year]
+  (case year
+    "freshman"  1
+    "sophomore" 2
+    "junior"    3
+    "senior"    4
+                0 ; default
+  )
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Function -main() test-drives our yearCode() function.
 ;;; Input: year: one of {freshman, sophomore, junior, or senior}.
@@ -48,7 +70,10 @@
  (print "\nEnter your academic year: ") (flush)
  (let
     [ year (read-line) ]                ; read year (a string)
-    (println (yearCode year) "\n")      ; display its code
- )
+    (println (yearCode year))      ; display its code
+    (println (yearCode2 year))     ; display using cond function
+    (println (yearCode3 year) "\n")
+  )
+
 )
 

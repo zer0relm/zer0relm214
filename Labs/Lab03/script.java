@@ -1,8 +1,11 @@
-Script started on 2020-02-20 13:27:26-0500
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ cat YearCodes.java
+Script started on 2020-02-20 15:30:58-0500
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ cat YearCodes.java
 /* YearCodes.java is a driver for function yearCode().
  *
  * Begun by: Prof. Adams, for CS 214 at Calvin College.
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 02/20/2020
  ****************************************************************/
 
 import java.util.Scanner;
@@ -41,32 +44,32 @@ public class YearCodes {
 
 
 }
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ javaccat YearCodes.javaexit[Kprint --help[Ka2ps example6.script                      java  c -deprecatioln      ation YearCodes.java 
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ java YearCodes 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ javac -deprecation YearCodes.java 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ java YearCodes 
 
 Enter your academic year: 
 freshman
 1
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ java YearCodes 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ java YearCodes 
 
 Enter your academic year: 
-sophmo  omore
+sophomore
 2
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ java YearCodes 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ java YearCodes 
 
 Enter your academic year: 
 junior
 3
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ java YearCodes 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ java YearCodes 
 
 Enter your academic year: 
 senior
 4
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ java YearCodes 
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ java YearCodes 
 
 Enter your academic year: 
-second year  
+ye  second year
 0
-]0;ajv234@gold08: ~/cs214/Labs/Lab03[01;32majv234@gold08[00m:[01;34m~/cs214/Labs/Lab03[00m$ exit
+]0;aj@aj-VirtualBox: ~/Documents/cs214/Labs/Lab03/Java[01;32maj@aj-VirtualBox[00m:[01;34m~/Documents/cs214/Labs/Lab03/Java[00m$ exit
 
-Script done on 2020-02-20 13:28:35-0500
+Script done on 2020-02-20 15:31:44-0500

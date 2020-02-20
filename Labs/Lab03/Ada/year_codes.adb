@@ -1,6 +1,9 @@
 -- year_codes.adb converts academic year codes to corresponding years.
 --
 -- Begun by: Dr. Adams, for CS 214 at Calvin College.
+-- 
+-- Completed by: AJ Vriland (ajv234)
+-- Date: 02/20/2020
 --
 -- Input: year, a string
 -- Precondition: year is one of "freshman", "sophomore", "junior", "senior"
