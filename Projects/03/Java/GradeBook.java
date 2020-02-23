@@ -24,7 +24,7 @@ public class GradeBook{
   /***********************************************************
    * gradeBook() converts a number grade into a letter grade
    *
-   * Receive: grade, an integer
+   * Receive: grade, an Integer
    * PRE: 1 <= grade <= 100
    * Return: letter grade
    ***********************************************************/
