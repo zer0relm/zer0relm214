@@ -19,8 +19,10 @@
       (print "\nEnter your Grade: ") (flush)
       (let
         [grade_str (read-line)]
-        [grade (Integer.grade_str)]
-        [grade (/ grade 10)]
+        ;(set grade (Integer.grade_str))
+        (set grade (read-string grade_str))
+        (Integer. grade)
+        (set grade (/ grade 10))
         (println (gradeBook grade))
       )
     )
