@@ -23,7 +23,7 @@ D a-tags.ads		20180111085525 491b781d ada.tags%s
 D a-textio.ads		20180111085525 881db35a ada.text_io%s
 D a-tiinio.ads		20180111085525 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
-D grade_book.adb	20200224202436 6e287f72 grade_book%b
+D grade_book.adb	20200225004124 6e287f72 grade_book%b
 D interfac.ads		20180111085525 5ab55268 interfaces%s
 D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
 D system.ads		20180111085525 4635ec04 system%s
@@ -41,19 +41,19 @@ D s-unstyp.ads		20180111085525 34867c83 system.unsigned_types%s
 D s-valint.ads		20180111085525 48a52a3f system.val_int%s
 D s-wchcon.ads		20180111085525 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 10|5r6 5r19 6r6 6r19
+16K9*Ada 20e8 10|11r6 11r19 12r6 12r19
 X 3 a-inteio.ads
-18K13*Integer_Text_IO[8|46] 10|5w23 6r23
+18K13*Integer_Text_IO[8|46] 10|11w23 12r23
 X 7 a-textio.ads
-49K13*Text_IO 471e16 10|5w10 6r10
-166U14*New_Line 10|32s5
-242U14*Put 10|28s5 31s5
-249U14*Get_Line 10|29s5
+49K13*Text_IO 471e16 10|11w10 12r10
+166U14*New_Line 10|38s5
+242U14*Put 10|34s5 37s5
+249U14*Get_Line 10|35s5
 X 10 grade_book.adb
-8U11*grade_book 8b11 35l5 35t15
-10a5 grade_num{string} 29m14 30r29
-11i5 grade{integer} 16m7 16r16 17r12 27r9 30m5 31r20
-12i5 charsRead{natural} 29m25
-14V14 gradeBook{string} 14b14 14>24 24l9 24t18 31s10
-14i24 grade_num{integer}
+14U11*grade_book 14b11 41l5 41t15
+16a5 grade_num{string} 35m14 36r29
+17i5 grade{integer} 22m7 22r16 23r12 33r9 36m5 37r20
+18i5 charsRead{natural} 35m25
+20V14 gradeBook{string} 20b14 20>24 30l9 30t18 37s10
+20i24 grade_num{integer}
 

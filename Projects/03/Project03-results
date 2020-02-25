@@ -1,0 +1,264 @@
+Script started on 2020-02-24 19:43:26-0500
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ada[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ada[00m$ cat grade_book.adb
+-- grade_book.adb converts numeric sores to letter grades
+--
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 02/24/2020
+--
+-- Input: grade_num, a String
+-- Precondition: grade_num is a number from 1-100
+-- Output: The equivalent letter grade
+--------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure grade_book is
+
+    grade_num : String(1..3) := "   ";
+    grade : integer := 1;
+    charsRead : Natural;
+
+    function gradeBook(grade_num: in integer) return string is
+    begin
+      grade := grade / 10;
+      case grade is
+        when 10 | 9 => return "A";
+        when 8 => return "B";
+        when 7 => return "C";
+        when 6 => return "D";
+        when others => return "F";
+      end case;
+    end gradeBook;
+
+begin
+  while grade /= 0 loop
+    Put("Enter grade (Enter 0 to exit): ");
+    Get_Line(grade_num, charsRead);
+    grade := Integer'Value (grade_num);
+    Put( gradeBook(grade));
+    New_Line;
+  end loop;
+
+end grade_book;
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ada[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ada[00m$ gnat make grade_book
+x86_64-linux-gnu-gnatmake-8: "grade_book" up to date.
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ada[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ada[00m$ ./grade_book 
+Enter grade (Enter 0 to exit): 65
+D
+Enter grade (Enter 0 to exit): 98
+A
+Enter grade (Enter 0 to exit): 87
+B
+Enter grade (Enter 0 to exit): 78
+C
+Enter grade (Enter 0 to exit): 56
+F
+Enter grade (Enter 0 to exit): 100
+A
+Enter grade (Enter 0 to exit): A
+Enter grade (Enter 0 to exit): 0
+F
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ada[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ada[00m$ exit
+
+Script done on 2020-02-24 19:43:51-0500
+Script started on 2020-02-24 19:33:39-0500
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Java[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Java[00m$ cat GradeBook.java
+/* GradeBook.java is a driver for the function gradeBook();
+ *
+ * Program by: AJ Vrieland (ajv234)
+ * Date: 02/23/20
+ **********************************************************/
+
+import java.util.Scanner;
+
+public class GradeBook{
+
+  public static void main(String[] arg) {
+    Scanner keyboard = new Scanner(System.in);
+    String gradestr = "";                                       // init gradestr
+    int grade = 1;                                              // init grade (1 to enter the loop)
+    while (grade != 0){                                         // starts loop to enter grades
+      System.out.print("Enter a grade (type '0' to exit): ");   // asks user for grade and instructions to exit
+      gradestr = keyboard.next();                               // gets string from user
+      grade = Integer.parseInt(gradestr);                       // converts user string to int
+      System.out.print(gradeBook(grade) + "\n");                // returns the letter grade
+    }
+
+  }
+
+  /***********************************************************
+   * gradeBook() converts a number grade into a letter grade
+   *
+   * Receive: grade, an Integer
+   * PRE: 1 <= grade <= 100
+   * Return: letter grade
+   ***********************************************************/
+  public static String gradeBook(int grade){
+    switch (grade / 10) {
+      case 10: case 9:
+        return "A";
+      case 8:
+        return "B";
+      case 7:
+        return "C";
+      case 6:
+        return "D";
+      default:
+        return "F";
+    }
+  }
+}
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Java[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Java[00m$ javac -deprecation GradeBook.java 
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Java[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Java[00m$ java GradeBook 
+Enter a grade (type '0' to exit): 12
+F
+Enter a grade (type '0' to exit): 56
+F
+Enter a grade (type '0' to exit): 65
+D
+Enter a grade (type '0' to exit): 78
+C
+Enter a grade (type '0' to exit): 87
+B
+Enter a grade (type '0' to exit): 98
+A
+Enter a grade (type '0' to exit): 99
+A
+Enter a grade (type '0' to exit): 100
+A
+Enter a grade (type '0' to exit): 0
+F
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Java[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Java[00m$ exit
+
+Script done on 2020-02-24 19:34:40-0500
+Script started on 2020-02-24 19:36:05-0500
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ cat gra[K[K[Ksrc/grade_book.clj
+;;;; grade_book.clj calculates the letter grade from a numbered score
+;;;;
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 02/24/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(ns grade_book)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; grade_book() returns the letter grade from a given numbered score
+;;; Receive: grade, an integer
+;;; Precondition: grade is an int between 1-100
+;;; Return: the letter grade
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn gradeBook [grade]
+  (cond
+    (= grade 10) "A"
+    (= grade 9) "A"
+    (= grade 8) "B"
+    (= grade 7) "C"
+    (= grade 6) "D"
+    :else "F"
+    )
+)
+
+
+
+; I couldn't get a while loop to work in clojure
+(defn -main []
+  (def grade 1)
+      (print "\nEnter your grade: ") (flush)
+      (let
+        [grade (Integer/parseInt (read-line))]  ; read an int from user
+        (def score (quot grade 10))             ; integer division
+        (println (gradeBook score))
+      )
+)
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 56
+F
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 65
+D
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 74
+C
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 87
+B
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 99
+A
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ clojure -m grade_book
+
+Enter your grade: 100
+A
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Clojure[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Clojure[00m$ exit
+
+Script done on 2020-02-24 19:37:00-0500
+Script started on 2020-02-24 19:25:21-0500
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ruby[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ruby[00m$ cat grade_book.rb 
+# grade_book.rb turns a number score into letter grade
+#
+# Completed by: AJ Vrieland (ajv234)
+# Date 02/24/2020
+#############################################################
+
+# Input: The number score
+# Precondition: The score is  number between 1-100
+# Output: The corresponding letter grade
+def gradeBook(score)
+  case score
+  when 10
+    return "A"
+  when 9
+    return "A"
+  when 8
+    return "B"
+  when 7
+    return "C"
+  when 6
+    return "D"
+  else
+    return "F"
+  end
+end
+
+
+
+if __FILE__ == $0
+    score = 1
+    while( score != 0)
+      print "Enter your score: "
+      score = gets
+      score = score.to_i
+      grade = score/10
+      puts gradeBook(grade)
+    end
+end
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ruby[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ruby[00m$ git [K[K[K[Kruby grade_book.rb 
+Enter your score: 100
+A
+Enter your score: 95
+A
+Enter your score: 82
+B
+Enter your score: 76
+C
+Enter your score: 66
+D
+Enter your score: 54
+F
+Enter your score: 21
+F
+Enter your score: 1
+F
+Enter your score: 0
+F
+]0;zer0relm@zer0relm: ~/cs214/Projects/03/Ruby[01;32mzer0relm@zer0relm[00m:[01;34m~/cs214/Projects/03/Ruby[00m$ exit
+
+Script done on 2020-02-24 19:26:01-0500

@@ -30,7 +30,7 @@ procedure grade_book is
     end gradeBook;
 
 begin
-  while grade_exit /= 0 loop
+  while grade /= 0 loop
     Put("Enter grade (Enter 0 to exit): ");
     Get_Line(grade_num, charsRead);
     grade := Integer'Value (grade_num);
