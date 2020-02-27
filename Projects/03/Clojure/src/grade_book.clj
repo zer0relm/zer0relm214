@@ -24,16 +24,22 @@
     :else "F"
     )
 )
-
-
+(defn driver [grade]
+  (if (not= grade 0)
+  (do
+    (print "\nEnter your grade: ") (flush)
+    (let
+      [grade (Integer/parseInt (read-line))]  ; read an int from user
+      (def score (quot grade 10))             ; integer division
+      (println (gradeBook score))
+      (recur grade)
+    )
+  )
+  )
+)
 
 ; I couldn't get a while loop to work in clojure
 (defn -main []
   (def grade 1)
-      (print "\nEnter your grade: ") (flush)
-      (let
-        [grade (Integer/parseInt (read-line))]  ; read an int from user
-        (def score (quot grade 10))             ; integer division
-        (println (gradeBook score))
-      )
+  (driver [grade])
 )
