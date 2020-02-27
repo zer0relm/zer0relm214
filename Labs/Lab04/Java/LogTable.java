@@ -19,9 +19,17 @@ class LogTable{
     start = keyboard.nextDouble();
     stop = keyboard.nextDouble();
     increment = keyboard.nextDouble();
+    logTable(start, stop, increment);
+  }
 
-    //Replace this line with a while loop to generate the table of logs
-
+  /* function logtTable() prints to console the log table given a start stop and increment
+   * Parameter: start, stop, and increment, doubles
+   * Precondition: start is less than stop
+   * Return: nothing
+   */
+  public static void logTable(double start, double stop, double increment){
+    for(double count = start; count < stop; count = count + increment){
+      System.out.printf("The logarithm of %.3f is %f\n", count, Math.log10(count));
+    }
   }
 }
-
