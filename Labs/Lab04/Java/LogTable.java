@@ -5,7 +5,8 @@
  * Output: A table of logarithms from start to stop,
  *         with increment as the step value.
  * Begun by: Nelesen, for CS 214 at Calvin College.
- * Completed by:
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 02/27/2020
  ********************************************************/
 import java.util.Scanner; 		// Get input
 

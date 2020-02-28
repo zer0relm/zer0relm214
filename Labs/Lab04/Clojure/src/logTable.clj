@@ -6,8 +6,8 @@
 ;;;;          with interval of increment.
 ;;;;
 ;;;; Begun by: Prof. Adams, for CS 214 at Calvin College.
-;;;; Completed by:
-;;;; Date:
+;;;; Completed by: AJ Vrieland
+;;;; Date: 02/27/2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns logTable)                                 ; name the program
