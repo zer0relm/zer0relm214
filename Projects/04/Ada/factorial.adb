@@ -1,3 +1,12 @@
+-- factorial.adb computes factorial
+--
+-- Input: a number
+-- Precondition: the number be positive
+-- Output: the factorial of that number
+--
+-- Completed by: AJ Vrieland
+-- Date: 03/01/2020
+
 
 with Ada.Text_IO, Ada.Float_Text_IO;
 use  Ada.Text_IO, Ada.Float_Text_IO;

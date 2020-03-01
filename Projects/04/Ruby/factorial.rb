@@ -1,6 +1,11 @@
-
-
-
+# factorial.rb computes the factorial of a number
+#
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/01/2020
+#
+# Input: Factorial number
+# Precondition: the number must be positive
+# Output: The factorial of that number
 
 
 if __FILE__ == $0

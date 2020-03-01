@@ -1,0 +1,50 @@
+Script started on 2020-03-01 12:22:47-0500
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ cat scrc[K[K[Krc/factorial.clj
+;;;; factorial.clj computes factorials
+;;;;
+;;;; Input: a number
+;;;; Precondition: the number must be positive
+;;;; Output: the factorial of the number
+;;;;
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 03/01/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns factorial)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main computes the factorial with a given number
+;;; Input: a number
+;;; Output: the factorial of that number
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+  (print "Enter Factorial: ") (flush)
+  (let
+    [ number (double (read)) ]
+    (def answer 1)
+    (loop [i 2]
+      (when (<= i number)
+        (def answer (* answer i))
+        (recur (+ i 1))
+      )
+    )
+    (println answer)
+  )
+)
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 56 
+120
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 10
+3628800
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 50
+Execution error (ArithmeticException) at factorial/-main (factorial.clj:26).
+integer overflow
+
+Full report at:
+/tmp/clojure-14625975669498132133.edn
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ exit
+
+Script done on 2020-03-01 12:23:17-0500

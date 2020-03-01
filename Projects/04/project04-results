@@ -1,0 +1,195 @@
+Project04 AJ Vrieland (ajv234) 03/01/2020 Lab Section B
+
+Script started on 2020-03-01 12:24:26-0500
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ cat fac[K[K[KFactorial.java
+/* Factorial.java computes a factorial
+ *
+ * Input: a number
+ * PRE: number must be positive
+ * Output: the factorial of that number
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 03/01/2020
+ *****************************************/
+
+
+import java.util.Scanner; 		// Get input
+
+class Factorial{
+
+
+  /* function computes the factorial
+   * Parameter: n, a number
+   * Precondition: n is positive
+   * Return: the factorial
+   */
+  public static double factorial(double n){
+    double answer = 1.0;
+    for(double i = 2; i <= n; i++){
+      answer *= i;
+    }
+    return answer;
+  }
+
+  public static void main(String[] args) {
+      Scanner keyboard = new Scanner(System.in);
+      System.out.print("Enter factorial: ");
+      double number;
+      number = keyboard.nextDouble();
+      System.out.println(factorial(number));
+  }
+}
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ javac -deprecta[K[Kation Factorial.java
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ java Factorial
+Enter factorial: 5
+120.0
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ java Factorial
+Enter factorial: 10
+3628800.0
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ java Factorial
+Enter factorial: 50
+3.0414093201713376E64
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Java[00m$ exit
+
+Script done on 2020-03-01 12:24:55-0500
+Script started on 2020-03-01 12:23:39-0500
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ cat factorial.adb
+-- factorial.adb computes factorial
+--
+-- Input: a number
+-- Precondition: the number be positive
+-- Output: the factorial of that number
+--
+-- Completed by: AJ Vrieland
+-- Date: 03/01/2020
+
+
+with Ada.Text_IO, Ada.Float_Text_IO;
+use  Ada.Text_IO, Ada.Float_Text_IO;
+
+procedure factorial is
+
+  num, increment, answer : Float;
+begin
+  Put("Enter Factorial: ");
+  Get(num);
+  increment := 2.0;
+  answer := 1.0;
+
+  while increment <= num loop
+    answer := increment * answer;
+    increment := 1.0 + increment;
+  end loop;
+
+  New_Line;
+  Put(answer);
+
+end factorial;
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ gnat make factorial.adb
+x86_64-linux-gnu-gcc-8 -c factorial.adb
+x86_64-linux-gnu-gnatbind-8 -x factorial.ali
+x86_64-linux-gnu-gnatlink-8 factorial.ali
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ ./factorial
+Enter Factorial: 5
+
+ 1.20000E+02
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ ./factorial
+Enter Factorial: 10
+
+ 3.62880E+06
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ ./factorial
+Enter Factorial: 50
+
++Inf********
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ada[00m$ exit
+
+Script done on 2020-03-01 12:24:07-0500
+Script started on 2020-03-01 12:22:47-0500
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ cat scrc[K[K[Krc/factorial.clj
+;;;; factorial.clj computes factorials
+;;;;
+;;;; Input: a number
+;;;; Precondition: the number must be positive
+;;;; Output: the factorial of the number
+;;;;
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 03/01/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns factorial)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main computes the factorial with a given number
+;;; Input: a number
+;;; Output: the factorial of that number
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+  (print "Enter Factorial: ") (flush)
+  (let
+    [ number (double (read)) ]
+    (def answer 1)
+    (loop [i 2]
+      (when (<= i number)
+        (def answer (* answer i))
+        (recur (+ i 1))
+      )
+    )
+    (println answer)
+  )
+)
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 56 
+120
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 10
+3628800
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ clojure -m factorial
+Enter Factorial: 50
+Execution error (ArithmeticException) at factorial/-main (factorial.clj:26).
+integer overflow
+
+Full report at:
+/tmp/clojure-14625975669498132133.edn
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Clojure[00m$ exit
+
+Script done on 2020-03-01 12:23:17-0500
+Script started on 2020-03-01 12:21:45-0500
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ruby[00m$ cat factorial.rb
+# factorial.rb computes the factorial of a number
+#
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/01/2020
+#
+# Input: Factorial number
+# Precondition: the number must be positive
+# Output: The factorial of that number
+
+
+if __FILE__ == $0
+  print "Enter factorial: "
+  num = gets.chop.to_f
+  answer = 1.0
+  increment = 2.0
+
+  while (increment <= num)
+    answer *= increment
+    increment += 1
+  end
+
+  print answer
+  print "\n"
+
+end
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ruby[00m$ ruby factorial.rb
+Enter factorial: 5
+120.0
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ruby[00m$ ruby factorial.rb
+Enter factorial: 10
+3628800.0
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ruby[00m$ ruby factorial.rb
+Enter factorial: 50
+3.0414093201713376e+64
+]0;zer0relm@Zer0relm: ~/cs214/Projects/04/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/04/Ruby[00m$ exit
+
+Script done on 2020-03-01 12:22:07-0500

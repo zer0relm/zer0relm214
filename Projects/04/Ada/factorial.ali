@@ -21,7 +21,7 @@ D a-tags.ads		20180111085525 491b781d ada.tags%s
 D a-textio.ads		20180111085525 881db35a ada.text_io%s
 D a-tiflio.ads		20180111085525 56fbda09 ada.text_io.float_io%s
 D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
-D factorial.adb		20200301165454 3b1a4460 factorial%b
+D factorial.adb		20200301171310 3b1a4460 factorial%b
 D interfac.ads		20180111085525 5ab55268 interfaces%s
 D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
 D system.ads		20180111085525 4635ec04 system%s
@@ -38,19 +38,19 @@ D s-traent.ads		20180111085525 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20180111085525 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180111085525 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 10|2r6 2r19 3r6 3r19
+16K9*Ada 20e8 10|11r6 11r19 12r6 12r19
 X 3 a-flteio.ads
-20K13*Float_Text_IO[8|46] 10|2w23 3r23
+20K13*Float_Text_IO[8|46] 10|11w23 12r23
 X 7 a-textio.ads
-49K13*Text_IO 471e16 10|2w10 3r10
-166U14*New_Line 10|19s3
-242U14*Put 10|9s3
+49K13*Text_IO 471e16 10|11w10 12r10
+166U14*New_Line 10|28s3
+242U14*Put 10|18s3
 X 8 a-tiflio.ads
-57U14*Get 10|10s3[3|20]
-68U14*Put 10|20s3[3|20]
+57U14*Get 10|19s3[3|20]
+68U14*Put 10|29s3[3|20]
 X 10 factorial.adb
-5U11*factorial 5b11 22l5 22t14
-7f3 num{float} 10m7 14r22
-7f8 increment{float} 11m3 14r9 15r15 16m5 16r24
-7f19 answer{float} 12m3 15m5 15r27 20r7
+14U11*factorial 14b11 31l5 31t14
+16f3 num{float} 19m7 23r22
+16f8 increment{float} 20m3 23r9 24r15 25m5 25r24
+16f19 answer{float} 21m3 24m5 24r27 29r7
 
