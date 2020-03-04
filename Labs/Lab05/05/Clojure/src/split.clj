@@ -25,8 +25,10 @@
 
 (defn split [str pos]
   (let
-    [first (subs first 0 pos)
-     second (subs String pos (count str))]
+    [first (subs str 0 pos)
+     second (subs str pos (count str))
+    ]
+    (vector first second)
   )
 
 
