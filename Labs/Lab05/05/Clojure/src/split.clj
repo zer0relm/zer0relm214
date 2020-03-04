@@ -15,16 +15,22 @@
 (ns split)      ; name the program
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; split() splits a string into its two substrings.  
-;;; Receive: aString, the string to be split,         
+;;; split() splits a string into its two substrings.
+;;; Receive: aString, the string to be split,
 ;;;          splitPos, the index where aString should be split.
 ;;; PRE: 0 <= splitPos < the length of aString.
-;;; Return: the substring of aString before pos, and  
+;;; Return: the substring of aString before pos, and
 ;;;         the substring of aString from pos onwards.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Replace this line with the definition of split()
+(defn split [str pos]
+  (let
+    [first (subs first 0 pos)
+     second (subs String pos (count str))]
+  )
 
+
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; main function
 ;;; Input: the string to be split,
@@ -36,17 +42,16 @@
   (let
     [ aString (read-line) ]                      ; read the string
     (print "Enter the split position: ") (flush)
-    (let 
+    (let
       [ pos (read)                               ; read the split pos.
         result (split aString pos)               ; split the string
         part1 (get result 0)                     ; retrieve the two
         part2 (get result 1)                     ;  parts
       ]
                                                  ; display the parts
-      (printf (str "\nThe first part is \"%s\" and" 
+      (printf (str "\nThe first part is \"%s\" and"
                     " the second part is \"%s\"\n\n")
                        part1 part2)
     )
   )
 )
-
