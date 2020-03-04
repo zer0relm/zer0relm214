@@ -22,16 +22,19 @@ procedure split is
    Pos, Chars_read       : Natural;
 
    ------------------------------------------------
-   --  split() splits a string in two.           
+   --  split() splits a string in two.
    -- Receive: The_String, the string to be split,
-   --          Position, the split index.        
-   -- PRE: 0 < Position <= The_String.length(). 
+   --          Position, the split index.
+   -- PRE: 0 < Position <= The_String.length().
    --     (Ada arrays are 1-relative by default)
    -- Passback: First_Part - the first substring,
    --           Last_Part - the second substring.
    ------------------------------------------------
-   -- Replace this line with definition of split() 
-
+   function split(str: in string; pos: in integer; p1: in out string; p2: in out string) return string is
+   begin
+      move(str(0, pos), p1);
+      move(str(pos, 40-pos), p2);
+   end split;
 
 begin                                           -- Prompt for input
    Put("To split a string, enter the string: ");
@@ -47,4 +50,3 @@ begin                                           -- Prompt for input
    Put_Line(Part2);
 
 end split;
-
