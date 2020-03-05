@@ -1,0 +1,300 @@
+Script started on 2020-03-05 13:55:43-0500
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ cat script.ada            split.adb
+-- split.adb splits an input string about a specified position.
+--
+-- Input: Astring, a string,
+--        Pos, an integer.
+-- Precondition: pos is in Astring'Range.
+-- Output: The substrings Astring(Astring'First..Pos-1) and
+--                        Astring(Pos..Astring'Last).
+--
+-- Begun by: Dr. Adams, for CS 214 at Calvin College.
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 02/05/2020
+--------------------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+with Ada.Strings.Fixed;
+use Ada.Strings.Fixed;
+procedure split is
+
+   EMPTY_STRING : String := "                                        ";
+
+   Astring, Part1, Part2 : String  := EMPTY_STRING;
+   Pos, Chars_read       : Natural;
+
+   ------------------------------------------------
+   --  split() splits a string in two.
+   -- Receive: The_String, the string to be split,
+   --          Position, the split index.
+   -- PRE: 0 < Position <= The_String.length().
+   --     (Ada arrays are 1-relative by default)
+   -- Passback: First_Part - the first substring,
+   --           Last_Part - the second substring.
+   ------------------------------------------------
+   procedure split(str: in String; pos1: in Natural; p1, p2: in out String) is
+     substr1, substr2 : String := EMPTY_STRING;
+   begin
+      --substr1 := str(0, pos1);
+      --substr2 := str(pos1, 40-pos1);
+      Ada.Strings.Fixed.Move(str(str'First .. (pos1 - 1)), p1);
+      Ada.Strings.Fixed.Move(str(pos1 .. str'Last), p2);
+   end split;
+
+begin                                           -- Prompt for input
+   Put("To split a string, enter the string: ");
+   Get_Line(Astring, Chars_Read);
+   Put("Enter the split position: ");
+   Get(Pos);
+
+   split(Astring, Pos, Part1, Part2);
+
+   Put("The first part is ");
+   Put_Line(Part1);
+   Put(" and the second part is ");
+   Put_Line(Part2);
+
+end split;
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ gnat make split.adb
+x86_64-linux-gnu-gcc-7 -c split.adb
+x86_64-linux-gnu-gnatbind-7 -x split.ali
+x86_64-linux-gnu-gnatlink-7 split.ali
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ ./split 
+To split a string, enter the string: hello
+Enter the split position: 1
+The first part is                                         
+ and the second part is hello                                   
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ ./split 
+To split a string, enter the string: hello
+Enter the split position: 4
+The first part is hel                                     
+ and the second part is lo                                      
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ ./split 
+To split a string, enter the string: hello
+Enter the split position: 6
+The first part is hello                                   
+ and the second part is                                         
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ada[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ada[00m$ exit
+
+Script done on 2020-03-05 13:56:25-0500
+Script started on 2020-03-05 13:56:49-0500
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Clojure[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Clojure[00m$ cat src/split.clj
+;;;; split.clj splits a string into two substrings.
+;;;;
+;;;; Input: aString, the string to be split,
+;;;;        pos, the index where aString is to be split.
+;;;; Output: the substring of aString before pos, and
+;;;;         the substring of aString from pos onwards.
+;;;;
+;;;; Usage: clojure -m split
+;;;;
+;;;; Begun by: Dr. Adams, for CS 214 at Calvin College.
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 02/05/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns split)      ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; split() splits a string into its two substrings.
+;;; Receive: aString, the string to be split,
+;;;          splitPos, the index where aString should be split.
+;;; PRE: 0 <= splitPos < the length of aString.
+;;; Return: the substring of aString before pos, and
+;;;         the substring of aString from pos onwards.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn split [str pos]
+  (let
+    [first (subs str 0 pos)
+     second (subs str pos (count str))
+    ]
+    (vector first second)
+  )
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; main function
+;;; Input: the string to be split,
+;;;        the index where it should be split.
+;;; Output: the two split parts of the string.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "To split a string, enter the string: ") (flush)
+  (let
+    [ aString (read-line) ]                      ; read the string
+    (print "Enter the split position: ") (flush)
+    (let
+      [ pos (read)                               ; read the split pos.
+        result (split aString pos)               ; split the string
+        part1 (get result 0)                     ; retrieve the two
+        part2 (get result 1)                     ;  parts
+      ]
+                                                 ; display the parts
+      (printf (str "\nThe first part is \"%s\" and"
+                    " the second part is \"%s\"\n\n")
+                       part1 part2)
+    )
+  )
+)
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Clojure[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Clojure[00m$ clojure -m split
+To split a string, enter the string: hello
+Enter the split position: 0
+
+The first part is "" and the second part is "hello"
+
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Clojure[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Clojure[00m$ hell    clojure -m split
+To split a string, enter the string: hello
+Enter the split position: 3
+
+The first part is "hel" and the second part is "lo"
+
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Clojure[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Clojure[00m$ clojure -m split
+To split a string, enter the string: hello
+Enter the split position: 5
+
+The first part is "hello" and the second part is ""
+
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Clojure[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Clojure[00m$ exit
+
+Script done on 2020-03-05 13:57:50-0500
+Script started on 2020-03-05 13:59:08-0500
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ -jac    jcav   avac -deprecation Split.java 
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ cat Split.java
+/* Split.java is a class and program that splits a string
+ * into two substrings.
+ *
+ * Begun by: Serita Nelesen
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 03/04/2020
+ ***************************************************************/
+
+import java.util.Scanner;
+
+// java class Split
+public class Split
+{
+  // main program
+  public static void main(String[] args)
+    {
+      Scanner keyboard = new Scanner(System.in);
+      // prompt for the string
+      System.out.println("\nTo split a string, enter the string: ");
+      String theString = keyboard.next();
+
+      // prompt for splitting position
+      System.out.println("\nEnter the split position: ");
+      int position = keyboard.nextInt();
+
+      //Create list, compute results and print
+      String [] resultList = new String[2];
+      splitter(theString, position, resultList);
+      System.out.println("\nThe first part is " + resultList[0] + "\n and the second part is " + resultList[1]);
+
+    }
+
+  /* splitter() splits a string according to the position specified
+   * Receive: 	theString - the string to be split
+   * 		pos - the position at which to split
+   *            resList - an array of strings in which to place results
+   *****************************************************/
+  // replace this line with a definition for splitter
+  public static void splitter(String theString, int position, String[] resultList){
+    String first = theString.substring(0, position);
+    String second = theString.substring(position, theString.length());
+    resultList[0] = first;
+    resultList[1] = second;
+  }
+
+}
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ java Split 
+
+To split a string, enter the string: 
+hello
+
+Enter the split position: 
+0
+
+The first part is 
+ and the second part is hello
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ java Split 
+
+To split a string, enter the string: 
+hello
+
+Enter the split position: 
+3
+
+The first part is hel
+ and the second part is lo
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ java Split 
+
+To split a string, enter the string: 
+hello
+
+Enter the split position: 
+5
+
+The first part is hello
+ and the second part is 
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Java[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Java[00m$ exit
+
+Script done on 2020-03-05 14:00:04-0500
+Script started on 2020-03-05 13:54:32-0500
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ruby[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ruby[00m$ cat split.rb 
+# split.rb splits a string into two substrings.
+#
+# Input: A string and an integer string position to split the string by.
+# Precondition: The position integer is within the range of the string size.
+# Output: The substrings aString(0, position - 1) and
+#   aString(pos, length() - 1).
+#
+# Begun by: Prof. Adams, for CS 214 at Calvin College.
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/05/2020
+#################################################################
+
+
+# split() splits a string into its two substrings.
+# Receive: aString, the string to be split,
+#        pos, the split position.
+# PRE: 0 <= pos < the length of aString.
+# Return: the substring of aString before pos, and
+#         the substring of aString from pos onwards.
+######################################################
+
+def split(str, pos)
+  [str[0, pos], str[pos, str.size]]
+
+end
+
+def main
+  print "To split a string, enter the string: ";
+  the_string = gets
+  print "Enter the split position: ";
+  position = gets.to_i
+  split_string = split(the_string, position)
+  puts "The first part is: " << split_string[0]
+  puts "and the second part is: " << split_string[1]
+end
+
+main
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ruby[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ruby[00m$ ruyb  by split.rb 
+To split a string, enter the string: hello
+Enter the split position: 0
+The first part is: 
+and the second part is: hello
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ruby[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ruby[00m$ ruby split.rb 
+To split a string, enter the string: hello
+Enter the split position: 3
+The first part is: hel
+and the second part is: lo
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ruby[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ruby[00m$ ruby split.rb 
+To split a string, enter the string: hello
+Enter the split position: 5
+The first part is: hello
+and the second part is: 
+]0;ajv234@gold07: ~/cs214/Labs/Lab05/05/Ruby[01;32majv234@gold07[00m:[01;34m~/cs214/Labs/Lab05/05/Ruby[00m$ exit
+
+Script done on 2020-03-05 13:55:16-0500
