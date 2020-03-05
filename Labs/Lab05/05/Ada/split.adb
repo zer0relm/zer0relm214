@@ -14,6 +14,8 @@
 with Ada.Text_IO, Ada.Integer_Text_IO;
 use  Ada.Text_IO, Ada.Integer_Text_IO;
 
+with Ada.Strings.Fixed;
+use Ada.Strings.Fixed;
 procedure split is
 
    EMPTY_STRING : String := "                                        ";
@@ -30,10 +32,14 @@ procedure split is
    -- Passback: First_Part - the first substring,
    --           Last_Part - the second substring.
    ------------------------------------------------
-   function split(str: in string; pos: in integer; p1: in out string; p2: in out string) return string is
+   function split(str: in String; pos1: in Natural; p1, p2: in String) return String is
+     substr1, substr2 : String := EMPTY_STRING;
    begin
-      move(str(0, pos), p1);
-      move(str(pos, 40-pos), p2);
+      substr1 := str(0, pos1);
+      substr2 := str(pos1, 40-pos1);
+      Ada.Strings.Fixed.Move(substr1, p1);
+      Ada.Strings.Fixed.Move(substr2, p2);
+      return p1;
    end split;
 
 begin                                           -- Prompt for input
