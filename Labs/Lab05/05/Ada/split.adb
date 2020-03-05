@@ -7,8 +7,8 @@
 --                        Astring(Pos..Astring'Last).
 --
 -- Begun by: Dr. Adams, for CS 214 at Calvin College.
--- Completed by:
--- Date:
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 02/05/2020
 --------------------------------------------------------------
 
 with Ada.Text_IO, Ada.Integer_Text_IO;
@@ -32,14 +32,13 @@ procedure split is
    -- Passback: First_Part - the first substring,
    --           Last_Part - the second substring.
    ------------------------------------------------
-   function split(str: in String; pos1: in Natural; p1, p2: in String) return String is
+   procedure split(str: in String; pos1: in Natural; p1, p2: in out String) is
      substr1, substr2 : String := EMPTY_STRING;
    begin
-      substr1 := str(0, pos1);
-      substr2 := str(pos1, 40-pos1);
-      Ada.Strings.Fixed.Move(substr1, p1);
-      Ada.Strings.Fixed.Move(substr2, p2);
-      return p1;
+      --substr1 := str(0, pos1);
+      --substr2 := str(pos1, 40-pos1);
+      Ada.Strings.Fixed.Move(str(str'First .. (pos1 - 1)), p1);
+      Ada.Strings.Fixed.Move(str(pos1 .. str'Last), p2);
    end split;
 
 begin                                           -- Prompt for input

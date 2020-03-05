@@ -6,26 +6,28 @@
 #   aString(pos, length() - 1).
 #
 # Begun by: Prof. Adams, for CS 214 at Calvin College.
-# Completed by:
-# Date:
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/05/2020
 #################################################################
 
 
 # split() splits a string into its two substrings.
-# Receive: aString, the string to be split,       
-#        pos, the split position.                  
+# Receive: aString, the string to be split,
+#        pos, the split position.
 # PRE: 0 <= pos < the length of aString.
-# Return: the substring of aString before pos, and  
+# Return: the substring of aString before pos, and
 #         the substring of aString from pos onwards.
 ######################################################
 
-# Replace this line with the definition of split()
+def split(str, pos)
+  [str[0, pos], str[pos, str.size]]
 
+end
 
 def main
-  print "To split a string, enter the string: "; 
+  print "To split a string, enter the string: ";
   the_string = gets
-  print "Enter the split position: "; 
+  print "Enter the split position: ";
   position = gets.to_i
   split_string = split(the_string, position)
   puts "The first part is: " << split_string[0]

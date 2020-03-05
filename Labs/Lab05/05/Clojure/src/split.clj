@@ -8,8 +8,8 @@
 ;;;; Usage: clojure -m split
 ;;;;
 ;;;; Begun by: Dr. Adams, for CS 214 at Calvin College.
-;;;; Completed by:
-;;;; Date:
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 02/05/2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns split)      ; name the program
@@ -30,8 +30,6 @@
     ]
     (vector first second)
   )
-
-
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; main function
