@@ -15,13 +15,13 @@ procedure quadratic is
     arg := b**2.0 - 4.0*a*c;
     if a = 0.0 then
       Put("a cannot be 0");
-      root1 := 0.0;
-      root2 := 0.0;
+      r1 := 0.0;
+      r2 := 0.0;
     elsif arg < 0.0 then
         Put("\n*** quadraticRoots(): b^2 - 4ac is negative!");
     else
-        root1 := (-b + Sqrt(arg))/2.0*a;
-        root2 := (-b - Sqrt(arg))/2.0*a;
+        r1 := (-b + Sqrt(arg))/2.0*a;
+        r2 := (-b - Sqrt(arg))/2.0*a;
     end if;
   end quadratic;
 
@@ -36,8 +36,8 @@ begin
   quadratic(Qa, Qb, Qc, root1, root2);
 
   if root1 = 0.0 then
-    Put("error");
     New_Line;
+    Put("error");
   else
     Put("Root 1 is, ");
     Put(root1);
