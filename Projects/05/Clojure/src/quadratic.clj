@@ -5,10 +5,12 @@
 
 (defn quadratic [A B C]
   (def args (- (Math/pow B 2) (* 4 (* A C))))
-  (print args)
   (def r1 (/ (- B args) (* 2 A)))
   (def r2 (/ (+ B args) (* 2 A)))
-  (vector r1 r2)
+  (cond
+    (< args 0) (vector 0 0)
+    :else (vector r1 r2)
+  )
 )
 
 (defn -main []
@@ -16,8 +18,12 @@
   (let
     [Qa (double (read))
      Qb (double (read))
-     Qc (double (read))]
-     (println Qa)
-     (quadratic Qa Qb Qc)
+     Qc (double (read))
+     roots (quadratic Qa Qb Qc)
+     root1 (get roots 0)
+     root2 (get roots 1)]
+     (printf (str "Root 1: \"%s\"; Root 2: \"%s\"\n") root1 root2)
+     (println)
+
   )
 )
