@@ -1,0 +1,66 @@
+Script started on 2020-03-11 15:18:28-0400
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Clojure[00m$ cat src/quadtra[K[K[Kratic.clj
+;;;; quadtratic.clj computes the quadtratic formula
+;;;;
+;;;; Input: three numbers
+;;;; Precondition: a > 0
+;;;; Output: the roots of the quadratic equation
+;;;;
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 03/11/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns quadratic)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; quadratic() computes the roots for a quadratic equation
+;;; Receive: A, B, C numbers
+;;; PRE: a > 0
+;;; Return: a vector of the roots
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn quadratic [A B C]
+  (def args (- (Math/pow B 2) (* 4 (* A C))))
+  (def r1 (/ (- B args) (* 2 A)))
+  (def r2 (/ (+ B args) (* 2 A)))
+  (cond
+    (< args 0) (vector 0 0)
+    :else (vector r1 r2)
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main
+;;; Input: A, B, C from a quadratic equation
+;;; Output: the roots of the formula
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+  (print "Enter A, B, C: ") (flush)
+  (let
+    [Qa (double (read))
+     Qb (double (read))
+     Qc (double (read))
+     roots (quadratic Qa Qb Qc)
+     root1 (get roots 0)
+     root2 (get roots 1)]
+     (printf (str "Root 1: \"%s\"; Root 2: \"%s\"\n") root1 root2)
+     (println)
+
+  )
+)
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Clojure[00m$ clojure -m quadratic
+Enter A, B, C: 1 1
+5
+2
+Root 1: "-6.0"; Root 2: "11.0"
+
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Clojure[00m$ clojure -m quadratic
+Enter A, B, C: 6
+5
+4
+Root 1: "0"; Root 2: "0"
+
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Clojure[00m$ exit
+
+Script done on 2020-03-11 15:19:08-0400

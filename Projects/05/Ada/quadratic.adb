@@ -1,4 +1,13 @@
-
+-- quadratic.adb computes the quadratic equation
+--
+-- Input: three numbers
+-- Precondition: a > 0
+-- Output: the roots of the quadratic equation
+--
+--
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 03/11/2020
+-------------------------------------------------------------
 with Ada.Text_IO, Ada.Float_Text_IO;
 use  Ada.Text_IO, Ada.Float_Text_IO;
 
@@ -8,7 +17,13 @@ use Ada.Numerics, Ada.Numerics.Elementary_Functions;
 procedure quadratic is
   Qa, Qb, Qc, root1, root2 : Float;
 
-
+  -----------------------------------------------------
+  -- quadtratic() calculates the quadratic equation
+  -- Receive: a, b, c
+  -- PRE: a > 0
+  -- Passback: r1 - the first root
+  --           r2 - the second root
+  -----------------------------------------------------
   procedure quadratic(a, b, c: in Float; r1, r2: in out Float) is
   arg : Float;
   begin

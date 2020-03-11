@@ -1,0 +1,205 @@
+Script started on 2020-03-11 15:20:25-0400
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ada[00m$  [Kcaat[K[Kt a[Kquadratic.ad[Kb[Kdb
+-- quadratic.adb computes the quadratic equation
+--
+-- Input: three numbers
+-- Precondition: a > 0
+-- Output: the roots of the quadratic equation
+--
+--
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 03/11/2020
+-------------------------------------------------------------
+with Ada.Text_IO, Ada.Float_Text_IO;
+use  Ada.Text_IO, Ada.Float_Text_IO;
+
+with Ada.Numerics, Ada.Numerics.Elementary_Functions;
+use Ada.Numerics, Ada.Numerics.Elementary_Functions;
+
+procedure quadratic is
+  Qa, Qb, Qc, root1, root2 : Float;
+
+  -----------------------------------------------------
+  -- quadtratic() calculates the quadratic equation
+  -- Receive: a, b, c
+  -- PRE: a > 0
+  -- Passback: r1 - the first root
+  --           r2 - the second root
+  -----------------------------------------------------
+  procedure quadratic(a, b, c: in Float; r1, r2: in out Float) is
+  arg : Float;
+  begin
+    arg := b**2.0 - 4.0*a*c;
+    if a = 0.0 then
+      Put("a cannot be 0");
+      r1 := 0.0;
+      r2 := 0.0;
+    elsif arg < 0.0 then
+        Put("\n*** quadraticRoots(): b^2 - 4ac is negative!");
+    else
+        r1 := (-b + Sqrt(arg))/2.0*a;
+        r2 := (-b - Sqrt(arg))/2.0*a;
+    end if;
+  end quadratic;
+
+begin
+  Put_Line("To calculate the quadratic equation,");
+  Put("Enter a: ");
+  Get(Qa);
+  Put("Enter b: ");
+  Get(Qb);
+  Put("Enter c: ");
+  Get(Qc);
+  quadratic(Qa, Qb, Qc, root1, root2);
+
+  if root1 = 0.0 then
+    New_Line;
+    Put("error");
+  else
+    Put("Root 1 is, ");
+    Put(root1);
+    Put(" Root 2 is, ");
+    Put(root2);
+  end if;
+
+
+end quadratic;
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ada[00m$ ./quadratic 
+To calculate the quadratic equation,
+Enter a: 1
+Enter b: 5
+Enter c: 2
+Root 1 is, -4.38447E-01 Root 2 is, -4.56155E+00
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ada[00m$ ./quadratic 
+To calculate the quadratic equation,
+Enter a: 6
+Enter b: 5
+Enter c: 4
+\n*** quadraticRoots(): b^2 - 4ac is negative!
+error
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ada[00m$ exit
+
+Script done on 2020-03-11 15:21:00-0400
+Script started on 2020-03-11 15:17:19-0400
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Java[00m$ cat Quadratic.java
+/* Quadratic.java returns roots of the quadratic equation given three numbers
+ *
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 03/11/2020
+ ******************************************************************************/
+
+import java.util.Scanner;
+
+public class Quadratic
+{
+  public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
+    double[] roots = new double[2];
+
+    System.out.println("\nTo calculate the quadratic formula,");
+    System.out.print("Enter a: ");
+    double Qa = keyboard.nextDouble();
+    System.out.print("Enter b: ");
+    double Qb = keyboard.nextDouble();
+    System.out.print("Enter c: ");
+    double Qc = keyboard.nextDouble();
+
+    roots = quadratic(Qa, Qb, Qc);
+
+    System.out.printf("Root 1 is, %f", roots[0]);
+    System.out.printf("\nRoot 2 is %f", roots[1]);
+
+  }
+
+  /* quadratic() returns roots of the quadratic equation
+   * Receive: a, b, c, doubles
+   * Precondition: a > 0
+   * Return: a vector of the roots
+   *******************************************************/
+  public static double[] quadratic(double a, double b, double c){
+    double[] rs = new double[2];
+    double arg = (Math.pow(b, 2) - 4.0*a*c);
+    if( a != 0.0 ){
+      if ( arg >= 0.0 ){
+        rs[0] = (b - Math.sqrt(arg)) / 2.0 * a;
+        rs[1] = (b + Math.sqrt(arg)) / 2.0 * a;
+      }
+    }
+    return rs;
+  }
+}
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Java[00m$ javac-[K -deprecation q[KQuadratic.java  
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Java[00m$ java Quadratic 
+
+To calculate the quadratic formula,
+Enter a: 1
+Enter b: 5
+Enter c: 2
+Root 1 is, 0.438447
+Root 2 is 4.561553]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Java[00m$ java Quadratic 
+
+To calculate the quadratic formula,
+Enter a: 6
+Enter b: 5
+Enter c: 4
+Root 1 is, 0.000000
+Root 2 is 0.000000]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Java[00m$ exit
+
+Script done on 2020-03-11 15:17:59-0400
+Script started on 2020-03-11 15:16:30-0400
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ruby[00m$ cat quadratic.rb 
+# quadratic.rb computes the quadratic roots of three numbers
+#
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/11/2020
+#
+# Input: Three numbers, a, b, c
+# Precondition: a must be positive
+# Output: two quadratic roots of those numbers
+#############################################################
+
+# quadratic() takes in three numbers and returns the quadratic roots
+# Receive: a, b, c
+# PRE: a > 0
+# Return: a vector of the quadratic roots
+################################################################
+
+def quadratic(a, b, c)
+  args = (b**2 - 4.0*a*c)
+  if args <= 0
+    return [0, 0]
+  elsif a == 0
+    return [0, 0]
+  else
+    return [(b-Math.sqrt(args)) / 2 * a, (b+Math.sqrt(args)) / 2 * a]
+  end
+end
+
+if __FILE__ == $0
+  print "Enter A B C: ";
+  qa = gets.to_i
+  qb = gets.to_i
+  qc = gets.to_i
+  roots = quadratic(qa, qb, qc)
+
+  if roots[0] == 0 && roots[1] == 0
+    puts "Not Valid"
+  else
+    printf "\n The first root is: %f. The second root is: %f. \n", roots[0], roots[1]
+  end
+end
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ruby[00m$ ruby quadratic.rb 
+Enter A B C: 1
+5
+2
+
+ The first root is: 0.438447. The second root is: 4.561553. 
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ruby[00m$ ruby quadratic.rb 
+Enter A B C: 6
+5
+4
+Not Valid
+]0;zer0relm@Zer0relm: ~/cs214/Projects/05/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Projects/05/Ruby[00m$ exit
+
+Script done on 2020-03-11 15:16:52-0400
