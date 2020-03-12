@@ -12,23 +12,50 @@
 (ns average)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; sum() sums the values in a vector.       
+;; sum() sums the values in a vector.
 ;; Receive: aVec, a vector of numbers.
 ;; Return: the sum of the values in aVec.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Replace this line with the definition of sum()
+;; harder (recursive) solution
+(defn sum [aVec]
+  (if (vector? aVec)      ; if aVec is a vector
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;     return 0
+      (+ (peek aVec)      ;   else return the last value
+         (sum (pop aVec)) ;    + sum(all but the last value)
+      )
+    )
+  )
+)
 
-;; Replace this line with the definition of sum2()
+;; easier (non-recursive) solution
+(defn sum2 [aVec]
+  (if (vector? aVec)      ; if aVec is a vector:
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;    return 0
+      (reduce + aVec)     ;   else reduce aVec using +
+    )
+  )
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; average() computes the average of a vector of numbers.
-;; Receive: aVec, a vector of numbers. 
+;; Receive: aVec, a vector of numbers.
 ;; Return: the average of the numbers in aVec.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   
-;; Replace this line with the definition of average()
 
+;; Replace this line with the definition of average()
+(defn average [array]
+  (if (vector? array)
+    (do
+      (if (not (empty? array))
+          (/ (sum array) (count array))
+      )
+    )
+    0
+  )
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; main function to test functions sum() and average()
@@ -40,23 +67,22 @@
       testVec  [9.0 8.0 7.0 6.0]
     ]
 
-    (print "\nThe empty vec: " emptyVec) 
-    (print "\nThe test  vec: " testVec) 
+    (print "\nThe empty vec: " emptyVec)
+    (print "\nThe test  vec: " testVec)
     (println "\n")
 
     ;; Test sum()...
-;    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
-;    (printf "The second sum is %.3f\n" (sum testVec))
+    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
+    (printf "The second sum is %.3f\n" (sum testVec))
 
     ;; Test average()...
-;    (printf "\nThe first average is %.3f\n" (average emptyVec))
-;    (printf "The second average is %.3f\n" (average testVec))
-;    (println "\n")
+    (printf "\nThe first average is %.3f\n" (average emptyVec))
+    (printf "The second average is %.3f\n" (average testVec))
+    (println "\n")
 
     ;; Test sum2()...
-;    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
-;    (printf "The second sum2 is %.3f\n" (sum2 testVec))
-;    (println "\n")
+    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
+    (printf "The second sum2 is %.3f\n" (sum2 testVec))
+    (println "\n")
   )
 )
-
