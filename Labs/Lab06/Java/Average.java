@@ -15,13 +15,14 @@ public class Average
 {
   public static void main(String[] args) {
 
-      // Replace this line with definitions of array0 and array1...
+      double[] array0 = {};
+      double[] array1 = {9.0, 8.0, 7.0, 6.0};
 
       // output the average of the values in the arrays
-//      System.out.println("The first average is " + avg(array0));
-//      System.out.println("The second average is " + avg(array1));
+      System.out.println("The first average is " + avg(array0));
+      System.out.println("The second average is " + avg(array1));
   }
-  
+
 
   /* sum() is a method that computes the sum of all the values
    * in an array of doubles.
@@ -29,16 +30,28 @@ public class Average
    * Return: the sum of the values in anArray.
    ************************************************************/
 
-   // Replace this line with the definition of sum()... 
-  
+   public static double sum(double[] theArray){
+    double total = 0.0;
+    for (int i = 0; i < theArray.length; i++){
+        total += theArray[i];
+    }
+    return total;
+  }
+
 
   /* avg() is a method that computes the average of the values
    * in an array.
    * Receive: anArray, an array of doubles.
    * Return: the average of the values in anArray.
    **************************************************************/
-  
-   // Replace this line with the definition of avg()...
+
+   public static double avg(double[] theArray ){
+     if (theArray.length == 0 || theArray == null) {
+       return 0.0;
+     }
+     else{
+       return sum(theArray) / 2.0;
+     }
+   }
 
 }
-
