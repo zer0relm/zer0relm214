@@ -50,7 +50,7 @@ public class Average
        return 0.0;
      }
      else{
-       return sum(theArray) / 2.0;
+       return sum(theArray) / theArray.length;
      }
    }
 
