@@ -4,8 +4,8 @@ Script started on 2020-03-12 17:09:34-0400
  *
  * Started by: Prof. Adams, for CS 214 at Calvin College
  *
- * Student Name:
- * Date:
+ * Student Name: AJ Vrieland (ajv234)
+ * Date: 03/12/2020
  *
  * Precondition: theArray, is an array of double values.
  * Output: the average of the numbers in theArray.
@@ -58,7 +58,7 @@ public class Average
 
 }
 ]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ javac -deprecation Average.java
-]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ java Average 
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ java Average
 The first average is 0.0
 The second average is 7.5
 ]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ exit

@@ -1,0 +1,311 @@
+Script started on 2020-03-12 17:09:34-0400
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ cat Average.java
+/* Average.java is a driver for method avg().
+ *
+ * Started by: Prof. Adams, for CS 214 at Calvin College
+ *
+ * Student Name: AJ Vrieland (ajv234)
+ * Date: 03/12/2020
+ *
+ * Precondition: theArray, is an array of double values.
+ * Output: the average of the numbers in theArray.
+ ***************************************************************/
+
+import java.io.*;
+
+public class Average
+{
+  public static void main(String[] args) {
+
+      double[] array0 = {};
+      double[] array1 = {9.0, 8.0, 7.0, 6.0};
+
+      // output the average of the values in the arrays
+      System.out.println("The first average is " + avg(array0));
+      System.out.println("The second average is " + avg(array1));
+  }
+
+
+  /* sum() is a method that computes the sum of all the values
+   * in an array of doubles.
+   * Receive: anArray, an array of doubles.
+   * Return: the sum of the values in anArray.
+   ************************************************************/
+
+   public static double sum(double[] theArray){
+    double total = 0.0;
+    for (int i = 0; i < theArray.length; i++){
+        total += theArray[i];
+    }
+    return total;
+  }
+
+
+  /* avg() is a method that computes the average of the values
+   * in an array.
+   * Receive: anArray, an array of doubles.
+   * Return: the average of the values in anArray.
+   **************************************************************/
+
+   public static double avg(double[] theArray ){
+     if (theArray.length == 0 || theArray == null) {
+       return 0.0;
+     }
+     else{
+       return sum(theArray) / theArray.length;
+     }
+   }
+
+}
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ javac -deprecation Average.java
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ java Average
+The first average is 0.0
+The second average is 7.5
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Java[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Java[00m$ exit
+
+Script done on 2020-03-12 17:09:48-0400
+Script started on 2020-03-13 15:08:24-0400
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ada[00m$ cat A[Kaverage.adb
+-- average.adb "test-drives" function Average.
+-- Precondition: theArray is an array of numbers.
+-- Output: the average of the numbers.
+--
+-- Begun by: Dr. Adams, CS 214 at Calvin College.
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 03/13/2020
+-----------------------------------------------
+
+with Ada.Text_IO; use Ada.Text_IO;             -- Put(String)
+with Ada.Float_Text_IO; use Ada.Float_Text_IO; -- Put(Float)
+
+procedure average is
+
+-- Declare Vector type
+  type Vector is array ( Positive range <>) of Float;
+-- Define array0 as an array containing no values
+  array0 : Vector := (0.0, 0.0);
+-- Define array1 as an array containing 9, 8, 7, 6
+  array1 : Vector := (9.0, 8.0, 7.0, 6.0);
+----------------------------------------------
+-- sum() sums the values in an array           -
+-- Receive: anArray, an array of numbers     -
+-- Return: the sum of the values in anArray. -
+----------------------------------------------
+
+-- Replace this line with definition of sum()
+  function sum(A: Vector) return Float is
+    Total : Float := 0.0;
+  begin
+    for I in A'Range
+    loop
+      Total := Total + A(I);
+    end loop;
+    return Total;
+  end sum;
+-- Replace this line with documentation and definition of average()
+-----------------------------------------------------
+-- average() averages all of the values of an array
+-- Recieve: anArray of numbers
+-- Return: the average of all of the numbers
+-----------------------------------------------------
+  function average(theArray: Vector) return Float is
+    index : integer := theArray'First;
+  begin
+    if theArray(index) = 0.0 then
+      return 0.0;
+    else
+      return sum(theArray) / Float(theArray'Length);
+    end if;
+  end;
+
+
+begin
+  Put(" average 0 is ");
+  Put( average(array0) );
+   New_line;
+   Put(" average 1 is ");
+   Put( average(array1) );
+   New_line;
+end average;
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ada[00m$ gnat makd [K[Ke a v[K[Kverage.adb
+x86_64-linux-gnu-gcc-8 -c average.adb
+x86_64-linux-gnu-gnatbind-8 -x average.ali
+x86_64-linux-gnu-gnatlink-8 average.ali
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ada[00m$ ./average
+ average 0 is  0.00000E+00
+ average 1 is  7.50000E+00
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ada[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ada[00m$ exit
+
+Script done on 2020-03-13 15:08:51-0400
+Script started on 2020-03-12 17:10:05-0400
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Clojure[00m$ cat src/average.clj
+;; average.clj "test-drives" function average().
+;;
+;; Output: the average of a sequence of numbers.
+;;
+;; Usage: clojure -m average
+;;
+;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;; Completed by: AJ Vrieland (ajv234)
+;; Date: 03/12/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns average)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sum() sums the values in a vector.
+;; Receive: aVec, a vector of numbers.
+;; Return: the sum of the values in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; harder (recursive) solution
+(defn sum [aVec]
+  (if (vector? aVec)      ; if aVec is a vector
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;     return 0
+      (+ (peek aVec)      ;   else return the last value
+         (sum (pop aVec)) ;    + sum(all but the last value)
+      )
+    )
+  )
+)
+
+;; easier (non-recursive) solution
+(defn sum2 [aVec]
+  (if (vector? aVec)      ; if aVec is a vector:
+    (if (empty? aVec)     ;   if aVec is empty:
+      0.0                 ;    return 0
+      (reduce + aVec)     ;   else reduce aVec using +
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; average() computes the average of a vector of numbers.
+;; Receive: aVec, a vector of numbers.
+;; Return: the average of the numbers in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Replace this line with the definition of average()
+(defn average [array]
+  (if (vector? array)
+    (do
+      (if (not (empty? array))
+          (/ (sum array) (count array))
+      )
+    )
+    0
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; main function to test functions sum() and average()
+;; Output: the sum and average of some test vectors.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [ emptyVec []
+      testVec  [9.0 8.0 7.0 6.0]
+    ]
+
+    (print "\nThe empty vec: " emptyVec)
+    (print "\nThe test  vec: " testVec)
+    (println "\n")
+
+    ;; Test sum()...
+    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
+    (printf "The second sum is %.3f\n" (sum testVec))
+
+    ;; Test average()...
+    (printf "\nThe first average is %.3f\n" (average emptyVec))
+    (printf "The second average is %.3f\n" (average testVec))
+    (println "\n")
+
+    ;; Test sum2()...
+    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
+    (printf "The second sum2 is %.3f\n" (sum2 testVec))
+    (println "\n")
+  )
+)
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Clojure[00m$ clojure-[K -m average
+
+The empty vec:  []
+The test  vec:  [9.0 8.0 7.0 6.0]
+
+
+The first sum is 0.000
+The second sum is 30.000
+
+The first average is nul
+The second average is 7.500
+
+
+
+The first sum2 is 0.000
+The second sum2 is 30.000
+
+
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Clojure[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Clojure[00m$ exit
+
+Script done on 2020-03-12 17:10:18-0400
+Script started on 2020-03-13 15:25:48-0400
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ruby[00m$ cat average.rb
+# average.rb averages the values of an array of doubles.
+# Precondition: theArray is an array of numbers
+# Output: the average of the values in theArray
+#
+# Begun by: Dr. Adams, for CS 214 at Calvin College.
+# Completed by:: AJ Vrieland (ajv234)
+# Date: 03/13/2020
+########################################################
+
+###############################################
+# sum() sums the values in an array
+# Receive: anArray, an array of numbers
+# Return: the sum of the values in anArray.
+################################################
+
+# Define sum() method here
+def sum(theArray)
+  total = 0
+  theArray.each {|number| total += number }
+  return total
+end
+
+# Document and define average() method here
+########################################################
+# average() computes the average of an array of numbers
+# Recieve: anArray of numbers
+# Return: the average of the numbers
+########################################################
+def average(theArray)
+  if theArray.empty?
+    return 0.0
+  else
+    return sum(theArray) / theArray.size
+  end
+end
+
+
+def main
+   # Define array0 as an Array containing no values
+   # Define array1 as an Array containing 9.0, 8.0, 7.0, 6.0
+   array0 = []
+   array1 = [9.0, 8.0, 7.0, 6.0]
+
+   puts "sum 0 is: #{ sum(array0) }\n"
+   puts "sum 1 is: #{ sum(array1) }\n"
+
+   puts "average 0 is: #{ average(array0) }\n"
+   puts "average 1 is: #{ average(array1) }\n"
+end
+
+main
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ruby[00m$ ruby average.rb
+sum 0 is: 0
+sum 1 is: 30.0
+average 0 is: 0.0
+average 1 is: 7.5
+]0;zer0relm@Zer0relm: ~/cs214/Labs/Lab06/Ruby[01;32mzer0relm@Zer0relm[00m:[01;34m~/cs214/Labs/Lab06/Ruby[00m$ exit
+
+Script done on 2020-03-13 15:25:58-0400
