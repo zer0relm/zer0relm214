@@ -1,0 +1,258 @@
+Script started on 2020-03-18 14:08:39-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="188" LINES="27"]
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ada[01;32m[zer0relm@AJ-Blade[01;37m Ada[01;32m]$[00m cat aar[K[Krrays.adb
+-- arrays.adb prints an Array that the user gives
+--
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 03/18/2020
+-------------------------------------------------------------
+with Ada.Text_IO, Ada.Float_Text_IO, Ada.Integer_Text_IO;
+use Ada.Text_IO, Ada.Float_Text_IO, Ada.Integer_Text_IO;
+
+procedure arrays is
+  type Vector is array ( Positive range <>) of Float;
+  arraySize : Integer := 0;
+
+
+  -----------------------------------------------------
+  -- fillarray() fills in the array with user given numbers
+  -- Receive: ar an array, size an Integer
+  -- PRE: size > 0
+  -- Passback: filled array
+  -----------------------------------------------------
+  procedure fillarray(ar: in out Vector; size: in Integer) is
+  tempNum : Float := 0.0;
+  i : Integer := 1;
+  begin
+  while i <= size loop
+    Put("Enter number");
+    Put(i);
+    Put(": ");
+    get(tempNum);
+    ar(i) := tempNum;
+    i := i + 1;
+  end loop;
+  end fillarray;
+
+
+begin
+  Put("Enter array size: ");
+  get(arraySize);
+  declare
+     myArray : Vector (1..arraySize);
+   begin
+     fillarray(myArray, arraySize);
+     Put("( ");
+     for i in myArray'Range loop
+       Put(myArray(i), 1, 2, 0);
+       Put(" ");
+     end loop;
+     Put(" )");
+   end;
+end arrays;
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ada[01;32m[zer0relm@AJ-Blade[01;37m Ada[01;32m]$[00m gnat make arrays.adb
+gnatmake: "arrays" up to date.
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ada[01;32m[zer0relm@AJ-Blade[01;37m Ada[01;32m]$[00m ./arrays 
+Enter array size: 7
+Enter number          1: 1
+Enter number          2: 2
+Enter number          3: 3
+Enter number          4: 4
+Enter number          5: 5
+Enter number          6: 6
+Enter number          7: 7
+( 1.00 2.00 3.00 4.00 5.00 6.00 7.00  )
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ada[01;32m[zer0relm@AJ-Blade[01;37m Ada[01;32m]$[00m exit
+
+Script done on 2020-03-18 14:09:06-04:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2020-03-17 18:47:58-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="189" LINES="29"]
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Clojure[01;32m[zer0relm@AJ-Desktop[01;37m Clojure[01;32m]$[00m cat scr[K[Krc/arrays.clj
+;;;; arrays.clj reads an array and the prints the array
+;;;;
+;;;; Input: size, # of numbers according to size
+;;;; Precondition: size must be positive
+;;;; Output: a filled array
+;;;;
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 03/17/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns arrays)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; fillarray() takes an array of a given size and prompts the user to fill in
+;;;             each index
+;;; Receive: an array, size, and counter variable
+;;; Precondition: size is > 0
+;;; Return: the filled in array
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn fillarray [array s i]
+  (if (< i s)
+    (do
+      (printf "\nEnter number %.1f: " i) (flush)
+      (let
+        [tempvar (double (read))]
+        (aset array i tempvar)
+      )
+      (recur array s (+ i 1))
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main makes and prints an array
+;;; Input: size
+;;; Output: the filled array of that size
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "\nEnter the size of the array: ") (flush)
+  (let
+    [ size (double (read)) ]
+    (def myArray (make-array Double/TYPE size))
+    (def counter 0.0)
+    (fillarray myArray size counter)
+
+    (println)
+    (print (seq myArray))
+    (println)
+    (println)
+
+  )
+
+
+)
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Clojure[01;32m[zer0relm@AJ-Desktop[01;37m Clojure[01;32m]$[00m clojure -m ara[K[Kra[K[Krrays
+
+Enter the size of the array: 7
+
+Enter number 0.0: 1
+
+Enter number 1.0: 2
+
+Enter number 2.0: 3
+
+Enter number 3.0: 4
+
+Enter number 4.0: 5
+
+Enter number 5.0: 6
+
+Enter number 6.0: 7
+
+(1.0 2.0 3.0 4.0 5.0 6.0 7.0)
+
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Clojure[01;32m[zer0relm@AJ-Desktop[01;37m Clojure[01;32m]$[00m exit
+
+Script done on 2020-03-17 18:48:23-04:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2020-03-15 12:12:23-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="189" LINES="29"]
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Java[01;32m[zer0relm@AJ-Desktop[01;37m Java[01;32m]$[00m cat Avera[K[K[Ke[Kar[K[K[Ka[Krrays.java
+/* Arrays.java prints an Array that the user gives
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 03/15/2020
+ **************************************************/
+
+import java.util.Scanner;
+
+public class Arrays
+{
+
+  public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
+
+    System.out.print("Enter the size of the array: ");
+    int size = keyboard.nextInt();
+    int[] mArray = new int[size];
+
+    mArray = fillarray(size, keyboard);
+
+    System.out.print("\n[");
+    for(int i = 0; i < size; i++){
+      System.out.print(" " + mArray[i]);
+    }
+    System.out.print(" ]\n");
+  }
+
+  /* fillarray() creates an array of numbers that the user imputs
+   * Recieve: size, int
+   * Precondition: size > 0
+   * Return: an filled array
+   ***************************************************************/
+  public static int[] fillarray(int s, Scanner k){
+    int[] tempArray = new int[s];
+    int tempNum;
+    for(int i = 0; i < s; i++){
+      System.out.print("Enter number " + i + ": ");
+      tempNum = k.nextInt();
+      tempArray[i] = tempNum;
+    }
+    return tempArray;
+  }
+}
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Java[01;32m[zer0relm@AJ-Desktop[01;37m Java[01;32m]$[00m javac 0[Kp[K-dp[Keprecation a[KArrays.java
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Java[01;32m[zer0relm@AJ-Desktop[01;37m Java[01;32m]$[00m java Arrr[Kays
+Enter the size of the array: 7
+Enter number 0: 1
+Enter number 1: 2
+Enter number 2: 3
+Enter number 3: 4
+Enter number 4: 5
+Enter number 5: 6
+Enter number 6: 7
+
+[ 1 2 3 4 5 6 7 ]
+]0;zer0relm@AJ-Desktop:~/cs214/Projects/06/Java[01;32m[zer0relm@AJ-Desktop[01;37m Java[01;32m]$[00m exit
+
+Script done on 2020-03-15 12:13:06-04:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2020-03-18 14:30:54-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="188" LINES="27"]
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ruby[01;32m[zer0relm@AJ-Blade[01;37m Ruby[01;32m]$[00m cat arrays.rb 
+# arrays.rb takes in and prints an array that the user gives
+#
+# Completed by: AJ Vrieland (ajv234)
+# Date: 03/18/2020
+############################################
+
+##############################################################
+# arrayfill() fills in the array with nubers given by the user
+# Recieve: array, and size
+# Return: filled out array
+#############################################################
+
+def arrayfill(array, s)
+  i = 0;
+  while (i < s)
+    printf "Enter number %.0f: ", i
+    tempVar = gets.to_f
+    array[i] = tempVar
+    i += 1
+  end
+  return array
+end
+
+
+
+def main
+  print "Enter Array Size: ";
+  arraySize = gets.to_i
+  myArray = Array.new(arraySize)
+  myArray = arrayfill(myArray, arraySize);
+  print "[ "
+  myArray.each do |num|
+    print num
+    print " "
+  end
+  print "]\n"
+end
+main
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ruby[01;32m[zer0relm@AJ-Blade[01;37m Ruby[01;32m]$[00m ruby arrays.rb 
+Enter Array Size: 7
+Enter number 0: 1
+Enter number 1: 2
+Enter number 2: 3
+Enter number 3: 4
+Enter number 4: 5
+Enter number 5: 6
+Enter number 6: 7
+[ 1.0 2.0 3.0 4.0 5.0 6.0 7.0 ]
+]0;zer0relm@AJ-Blade:~/cs214/Projects/06/Ruby[01;32m[zer0relm@AJ-Blade[01;37m Ruby[01;32m]$[00m exit
+
+Script done on 2020-03-18 14:31:25-04:00 [COMMAND_EXIT_CODE="0"]
