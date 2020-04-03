@@ -9,3 +9,12 @@ Clojure:
 	clojure -m "File_Name"
 Ruby:
 	ruby "File_Name".rb
+
+ssh:
+	ssh ajv234@cs-ssh.cs.calvin.edu
+	Copying:
+		**YOU HAVE TO BE IN LOCAL FOR TRANSFER NOT REMOTE**
+		To Local:
+			scp -r <remote> <local>
+		To Remote:
+			scp -r <local> <remote>
