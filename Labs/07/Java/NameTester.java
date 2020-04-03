@@ -4,7 +4,7 @@
  * Date:
  ************************************************************/
 
-public class NameTester  
+public class NameTester
 {
   public static void main(String[] args)
   {
@@ -22,4 +22,7 @@ public class NameTester
 }
 
 // Replace this line with the declaration of class Name...
-
+public class Name
+{
+  private String First, Middle, Last;
+};
