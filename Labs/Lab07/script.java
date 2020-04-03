@@ -3,7 +3,7 @@ Script started on 2020-04-03 15:36:47-04:00 [TERM="xterm-256color" TTY="/dev/pts
 /* NameTester.java is a 'driver' to test class Name.
  * Begun by: Prof. Adams, for CS 214 at Calvin College.
  * Student: AJ Vrieland (ajv234)
- * Date: 04/07/2020 
+ * Date: 04/03/2020 
  ************************************************************/
 
 public class NameTester

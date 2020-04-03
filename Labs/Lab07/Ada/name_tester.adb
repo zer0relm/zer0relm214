@@ -1,7 +1,7 @@
 -- namer.adb "test-drives" the Name type.
 -- Begun by: Prof. Adams, CS 214 at Calvin College.
 -- Completed by: AJ Vrieland
--- Date: 04/07/2020
+-- Date: 04/03/2020
 ----------------------------------------------
 
 with Ada.Text_IO; use Ada.Text_IO;
