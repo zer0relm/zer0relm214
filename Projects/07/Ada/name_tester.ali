@@ -9,23 +9,31 @@ RV NO_SECONDARY_STACK
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U name_tester%b		name_tester.adb		8d002929 NE OO SU IL
+U name_tester%b		name_tester.adb		2bb2502f NE OO SU IL
 W ada%s			ada.ads			ada.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 Z system.assertions%s	s-assert.adb		s-assert.ali
 Z system.concat_3%s	s-conca3.adb		s-conca3.ali
 Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
 D ada.ads		20200205132932 76789da1 ada%s
+D a-charac.ads		20200205132932 2d3ec45b ada.characters%s
+D a-chlat1.ads		20200205132932 66457d31 ada.characters.latin_1%s
 D a-except.ads		20200205132932 291912d5 ada.exceptions%s
 D a-ioexce.ads		20200205132932 e4a01f64 ada.io_exceptions%s
 D a-stream.ads		20200205132932 119b8fb3 ada.streams%s
+D a-string.ads		20200205132932 90ac6797 ada.strings%s
+D a-strfix.ads		20200205132932 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20200205132932 e8bb714a ada.strings.maps%s
 D a-tags.ads		20200205132932 491b781d ada.tags%s
 D a-textio.ads		20200205132932 881db35a ada.text_io%s
 D a-unccon.ads		20200205132932 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20200205132932 5ab55268 interfaces%s
 D i-cstrea.ads		20200205132932 e53d8b8e interfaces.c_streams%s
-D name_tester.adb	20200403211726 051d9a73 name_tester%b
+D name_tester.adb	20200408225924 73d3d71b name_tester%b
 D system.ads		20200205132932 4635ec04 system%s
 D s-assert.ads		20200205132932 cd8d2c94 system.assertions%s
 D s-conca3.ads		20200205132932 0b705ca5 system.concat_3%s
@@ -42,32 +50,59 @@ D s-traent.ads		20200205132932 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20200205132932 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20200205132932 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 10|7r6 7r23
-X 6 a-textio.ads
-49K13*Text_IO 471e16 10|7w10 7r27
-166U14*New_Line 10|98s16 99s30
-242U14*Put 10|86s5 99s4
-X 10 name_tester.adb
-9U11*name_tester 9b11 101l5 101t16
-12i3 NAME_SIZE{integer} 15r43
-14R8 Name 16e13 17r11 31r30 46r32 52r35 58r33 71r37 84r30
-15a5 myFirst{string} 33m11 48r18 73r20
-15a14 myMiddle{string} 34m11 54r20 73r38
-15a24 myLast{string} 35m11 60r20 73r57
-17r3 aName{14R8} 90m9 92r28 93r29 94r27 95r31 98r8
-31U11 Init 31b11 31<16 31>36 31>43 31>51 36l5 36t9 90s4
-31r16 theName{14R8} 33m3 34m3 35m3
-31a36 First{string} 33r22
-31a43 Middle{string} 34r23
-31a51 Last{string} 35r21
-46V10 getFirst{string} 46b10 46>19 49l5 49t13 92s19
-46r19 theName{14R8} 48r10
-52V12 getMiddle{string} 52b12 52>22 55l7 55t16 93s19
-52r22 theName{14R8} 54r12
-58V12 getLast{string} 58b12 58>20 61l7 61t14 94s19
-58r20 theName{14R8} 60r12
-71V12 getFullName{string} 71b12 71>24 74l7 74t18 86s9 95s19
-71r24 theName{14R8} 73r12 73r30 73r49
-84U13 Put 84b13 84>17 87l7 87t10 98s4
-84r17 theName{14R8} 86r21
+16K9*Ada 20e8 15|7r6 7r23 9r6 10r5
+X 7 a-string.ads
+16K13*Strings 35e16 15|9r10 10r9
+X 8 a-strfix.ads
+18K21*Fixed 251e22 15|9w18 10r17
+X 11 a-textio.ads
+49K13*Text_IO 471e16 15|7w10 7r27
+166U14*New_Line 15|153s16 161s16 168s30
+240U14*Get 15|138s5 140s5 142s5
+242U14*Put 15|88s5 137s5 139s5 141s5 168s4
+X 15 name_tester.adb
+11U11*name_tester 11b11 170l5 170t16
+14i3 NAME_SIZE{integer} 17r43 135r47
+16R8 Name 18e13 19r18 33r30 48r32 54r35 60r33 73r37 86r30 98r39 102r40 106r38
+. 118r30 134r36
+17a5 myFirst{string} 35m11 50r18 75r20 100m13 122r22
+17a14 myMiddle{string} 36m11 56r20 75r38 104m13 123r23
+17a24 myLast{string} 37m11 62r20 75r57 108m13 121r21
+19r3 aName{16R8} 146m9 148r28 149r29 150r27 151r31 153r8 155m13 155r13 156m14
+. 156r14 157m12 157r12 158r28 159r29 160r27 161r8 163r24
+19r10 name2{16R8} 165m13 166r8
+33U11 Init 33b11 33<16 33>36 33>43 33>51 38l5 38t9 143s5 146s4
+33r16 theName{16R8} 35m3 36m3 37m3
+33a36 First{string} 35r22
+33a43 Middle{string} 36r23
+33a51 Last{string} 37r21
+48V10 getFirst{string} 48b10 48>19 51l5 51t13 148s19 158s19
+48r19 theName{16R8} 50r10
+54V12 getMiddle{string} 54b12 54>22 57l7 57t16 149s19 159s19
+54r22 theName{16R8} 56r12
+60V12 getLast{string} 60b12 60>20 63l7 63t14 150s19 160s19
+60r20 theName{16R8} 62r12
+73V12 getFullName{string} 73b12 73>24 76l7 76t18 88s9 151s19
+73r24 theName{16R8} 75r12 75r30 75r49
+86U13 Put 86b13 86>17 89l7 89t10 153s4 161s4 166s4
+86r17 theName{16R8} 88r21
+98U13 setFirst 98b13 98=22 98>45 101l7 101t15 155s4
+98r22 theName{16R8} 100m5
+98a45 newfirst{string} 100r24
+102U13 setMiddle 102b13 102=23 102>46 105l7 105t16 156s4
+102r23 theName{16R8} 104m5
+102a46 newMiddle{string} 104r25
+106U13 setLast 106b13 106=21 106>44 109l7 109t14 157s4
+106r21 theName{16R8} 108m5
+106a44 newLast{string} 108r23
+118V12 lfmi{string} 118b12 118>17 125l7 125t11 163s19
+118r17 theName{16R8} 121r13 122r14 123r15
+119a5 last{string} 121m5 124r12 124r17
+119a11 first{string} 122m5 124r31 124r37
+119a18 middle{string} 123m5 124r52 124r59
+134U13 readName 134b13 134<22 144l7 144t15 165s4
+134r22 theName{16R8} 143m10
+135a3 firstName{string} 138m9 143r19
+135a14 middleName{string} 140m9 143r30
+135a26 lastName{string} 142m9 143r42
 

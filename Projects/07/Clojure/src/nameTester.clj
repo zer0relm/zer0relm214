@@ -6,7 +6,7 @@
 ;;;;
 ;;;; Begun by: Dr. Adams, CS 214 at Calvin College.
 ;;;; Completed by: AJ Vrieland (ajv234)
-;;;; Date: 04/03/2020
+;;;; Date: 04/08/2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns nameTester)   ; program name
@@ -81,6 +81,46 @@
 (defn printName [^Name theName]
   (print (toString theName))
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setFirst/Middle/Last() sets the corresponding name
+;;; Receive: aName, a Name, and the new name
+;;; Output: a new Name with the updated name
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn setFirst [theName newFirst]
+  (->Name newFirst (:myMiddle theName) (:myLast theName))
+)
+(defn setMiddle [theName newMiddle]
+  (->Name (:myFirst theName) newMiddle (:myLast theName))
+)
+(defn setLast [theName newLast]
+  (->Name (:myFirst theName) (:myMiddle theName) newLast)
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; lfmi() returns the initials in last - first - middle order
+;;; Receive: aName, a Name
+;;; Output: a string of initials
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn lfmi [^Name theName]
+  (str (subs (:myLast theName) 0 1) (subs (:myFirst theName) 0 1) (subs (:myMiddle theName) 0 1))
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; readName() lets user input the first middle and last name
+;;; Output: a Name
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn readName []
+  (println "Enter Name: ")
+  (let
+    [
+      first (read)
+      middle (read)
+      last (read)
+    ]
+    (->Name first middle last)
+  )
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; A simple driver to test our Name functions.
 ;;; Output: the result of testing our Name functions.
@@ -92,6 +132,12 @@
       name2 (->Name "Jane" "Penelope" "Jones") ; -invoking constructor directly
                                                ; -mapping field-names to values
       name3 (map->Name {:myLast "Jones" :myFirst "Jinx" :myMiddle "Joy"})
+
+      name4 (setFirst name1 "Andrew")
+      name5 (setMiddle name4 "James")
+      name6 (setLast name5 "Vrieland")
+
+      name7 (readName)
     ]
     ;; ----- SECTION 1 -----
     (println)
@@ -117,6 +163,19 @@
     (assert (= (getLast name3) "Jones") "getLast(3) failed")
     (assert (= (toString name3) "Jinx Joy Jones") "toString(3) failed")
     (printName name3) (println)
+    ;; ----- SECTION 4 -----
+    (println)
+    (print name6)(println)
+    (assert (= (getFirst name4) "Andrew") "setFirst() failed")
+    (assert (= (getMiddle name5) "James") "setMiddle() failed")
+    (assert (= (getLast name6) "Vrieland") "setLast() failed")
+    (printName name6) (println)
+
+    (println (lfmi name1))
+    (assert (= (lfmi name1) "JJP") "lfmi(1) failed")
+    (assert (= (lfmi name6) "VAJ") "lfmi(2) failed")
+
+    (printName name7)
 
     (println "\nAll tests passed!\n")
   )
