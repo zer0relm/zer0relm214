@@ -2,7 +2,7 @@
 #
 # Begun by: Dr. Adams, for CS 214 at Calvin College.
 # Completed by: AJ Vrieland (ajv234)
-# Date: 04/03/2020
+# Date: 04/08/2020
 ####################################################
 
 require 'test/unit/assertions'   # needed for assert
@@ -24,6 +24,31 @@ class Name
 		puts fullName()
 		return fullName()
 	end
+	def setFirst(newFirst)
+		@first = newFirst
+	end
+	def setLast(newLast)
+		@last = newLast
+	end
+	def setMiddle(newMiddle)
+		@middle = newMiddle
+	end
+
+	def lfmi()
+		return last[0] + first[0] + middle[0]
+	end
+
+	def readName()
+		puts "Enter first name: "
+		temp = gets.chomp
+		@first = temp
+		puts "Enter middle name: "
+		temp = gets.chomp
+		@middle = temp
+		puts "Enter last name: "
+		temp = gets.chomp
+		@last = temp
+	end
 end
 
 def testName
@@ -35,6 +60,18 @@ def testName
    assert name.fullName == "John Paul Jones", "fullName failed"
    assert name.print == "John Paul Jones", "print failed"
    
+   name.setFirst("Andrew")
+   name.setMiddle("James")
+   name.setLast("Vrieland")
+   assert name.first == "Andrew", "setFirst failed"
+   assert name.middle == "James", "setMiddle failed"
+   assert name.last == "Vrieland", "setLast failed"
+
+   assert name.lfmi == "VAJ", "lfmi failed"
+
+   name.readName()
+   name.print()
+
    print "All tests passed!\n"
 end
 

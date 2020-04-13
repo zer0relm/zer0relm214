@@ -1,7 +1,6 @@
-V "GNAT Lib v9"
+V "GNAT Lib v7"
 M P W=b
-A -gnata
-P ZX
+P SS ZX
 
 RN
 RV NO_IO
@@ -9,46 +8,44 @@ RV NO_SECONDARY_STACK
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U name_tester%b		name_tester.adb		2bb2502f NE OO SU IL
+U name_tester%b		name_tester.adb		a2be132a NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
-Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-Z system.assertions%s	s-assert.adb		s-assert.ali
-Z system.concat_3%s	s-conca3.adb		s-conca3.ali
-Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
-D ada.ads		20200205132932 76789da1 ada%s
-D a-charac.ads		20200205132932 2d3ec45b ada.characters%s
-D a-chlat1.ads		20200205132932 66457d31 ada.characters.latin_1%s
-D a-except.ads		20200205132932 291912d5 ada.exceptions%s
-D a-ioexce.ads		20200205132932 e4a01f64 ada.io_exceptions%s
-D a-stream.ads		20200205132932 119b8fb3 ada.streams%s
-D a-string.ads		20200205132932 90ac6797 ada.strings%s
-D a-strfix.ads		20200205132932 d07c346e ada.strings.fixed%s
-D a-strmap.ads		20200205132932 e8bb714a ada.strings.maps%s
-D a-tags.ads		20200205132932 491b781d ada.tags%s
-D a-textio.ads		20200205132932 881db35a ada.text_io%s
-D a-unccon.ads		20200205132932 0e9b276f ada.unchecked_conversion%s
-D interfac.ads		20200205132932 5ab55268 interfaces%s
-D i-cstrea.ads		20200205132932 e53d8b8e interfaces.c_streams%s
-D name_tester.adb	20200408225924 73d3d71b name_tester%b
-D system.ads		20200205132932 4635ec04 system%s
-D s-assert.ads		20200205132932 cd8d2c94 system.assertions%s
-D s-conca3.ads		20200205132932 0b705ca5 system.concat_3%s
-D s-crtl.ads		20200205132932 0ebbdb71 system.crtl%s
-D s-exctab.ads		20200205132932 54135002 system.exception_table%s
-D s-ficobl.ads		20200205132932 078245e4 system.file_control_block%s
-D s-parame.ads		20200205132932 48ec542b system.parameters%s
-D s-secsta.ads		20200205132932 20bbe636 system.secondary_stack%s
-D s-soflin.ads		20200205132932 a7318a92 system.soft_links%s
-D s-stache.ads		20200205132932 a37c21ec system.stack_checking%s
-D s-stalib.ads		20200205132932 09bd3940 system.standard_library%s
-D s-stoele.ads		20200205132932 2dc34a04 system.storage_elements%s
-D s-traent.ads		20200205132932 005bf670 system.traceback_entries%s
-D s-unstyp.ads		20200205132932 34867c83 system.unsigned_types%s
-D s-wchcon.ads		20200205132932 1b7d22d2 system.wch_con%s
+D ada.ads		20170106103348 76789da1 ada%s
+D a-charac.ads		20070912115821 2d3ec45b ada.characters%s
+D a-chlat1.ads		20140225151544 66457d31 ada.characters.latin_1%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-string.ads		20070406091342 90ac6797 ada.strings%s
+D a-strfix.ads		20101008130255 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20140611123156 e8bb714a ada.strings.maps%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D name_tester.adb	20200413201301 4aafd290 name_tester%b
+D system.ads		20170510173650 4635ec04 system%s
+D s-conca3.ads		20140225151544 0b705ca5 system.concat_3%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-secsta.ads		20170112134946 9751b57e system.secondary_stack%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
 X 1 ada.ads
 16K9*Ada 20e8 15|7r6 7r23 9r6 10r5
 X 7 a-string.ads
@@ -57,7 +54,7 @@ X 8 a-strfix.ads
 18K21*Fixed 251e22 15|9w18 10r17
 X 11 a-textio.ads
 49K13*Text_IO 471e16 15|7w10 7r27
-166U14*New_Line 15|153s16 161s16 168s30
+166U14*New_Line 15|153s16 161s16 166s16 168s30
 240U14*Get 15|138s5 140s5 142s5
 242U14*Put 15|88s5 137s5 139s5 141s5 168s4
 X 15 name_tester.adb
