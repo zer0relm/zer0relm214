@@ -1,7 +1,7 @@
 /* NameTester.java is a 'driver' to test class Name.
  * Begun by: Prof. Adams, for CS 214 at Calvin College.
- * Student:
- * Date:
+ * Student: AJ Vrieland (ajv234)
+ * Date: 04/14/2020
  ************************************************************/
 
 public class NameTester
