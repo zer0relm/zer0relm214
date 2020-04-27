@@ -1,3 +1,9 @@
+/* Quadratic.java returns roots of the quadratic equation given three numbers
+ *
+ *
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 03/11/2020
+ ******************************************************************************/
 
 import java.util.Scanner;
 
@@ -22,6 +28,11 @@ public class Quadratic
 
   }
 
+  /* quadratic() returns roots of the quadratic equation
+   * Receive: a, b, c, doubles
+   * Precondition: a > 0
+   * Return: a vector of the roots
+   *******************************************************/
   public static double[] quadratic(double a, double b, double c){
     double[] rs = new double[2];
     double arg = (Math.pow(b, 2) - 4.0*a*c);
