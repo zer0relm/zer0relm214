@@ -61,9 +61,21 @@ package List_Package is
 
  private
    -- replace this line with a forward-dec of List_Node
+   type List_Node;
    -- replace this line with a dec of Node_Ptr
+   type Node_Ptr is access List_Node;
    -- replace this line with a full dec of List_Node
+   type List_Node is
+          record
+           Its_Value : Integer;
+           Its_Next : Node_Ptr; 
+          end record;
    -- replace this line with a full dec of List
+   type List is
+        record
+          Its_First : List_Node;
+          Its_Last : List_Node;
+          its_Length : Integer;
+        end record;
 
 end List_Package;
-
