@@ -6,6 +6,8 @@
  */
 
 import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.Collections;
 
 public class Max {
 
@@ -34,11 +36,14 @@ public class Max {
     list3.add(88);
     list3.add(66);
 
-//    print(list1);
-//    print(list2);
-//    print(list3);
+    print(list1);
+    print(list2);
+    print(list3);
 
    // display maxima of the 3 lists...
+    System.out.println("Max of List1 is " + Collections.max(list1));
+    System.out.println("Max of List2 is " + Collections.max(list2));
+    System.out.println("Max of List3 is " + Collections.max(list3));
   }
 
   /** print() displays a LinkedList on the console.
@@ -50,5 +55,13 @@ public class Max {
    *                 separated by spaces.
    */
   // replace this line with the definition of print().
+  public static void print(LinkedList<Integer> aList)
+   {
+     Iterator<Integer> listIterator = aList.iterator();
+     while (listIterator.hasNext()){
+	    System.out.print(listIterator.next() + " ");
+	   }
+	   System.out.print('\n');
+   }
 
 }
