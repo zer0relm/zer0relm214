@@ -7,10 +7,10 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; maxOf2() finds the maximum of two values.  
-;; Receive: val1, val2, two values.  
+;; maxOf2() finds the maximum of two values.
+;; Receive: val1, val2, two values.
 ;; PRE: val1 and val2 can be compared using >.
-;; Return: the maximum of val1 and val2. 
+;; Return: the maximum of val1 and val2.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn maxOf2 [val1 val2]
   (if (> val1 val2)      ; if val1 > val2
@@ -21,10 +21,21 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; listMax() finds the maximum value in a list.
-;; Receive: aList, a list of values.    
-;; PRE: aList is a list 
+;; Receive: aList, a list of values.
+;; PRE: aList is a list
 ;;      values in aList can be compared using >.
-;; Return: the maximum value in aList.         
+;; Return: the maximum value in aList.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
+(defn listMax [myList]
+  (if (list? myList)
+    (do
+      (def tempVal (first myList))
+      (if (<= (count myList) 1)
+      (first myList)
+      (maxOf2 tempVal (listMax (rest myList)))
+      )
+    )
+    (empty)
+  )
+)
