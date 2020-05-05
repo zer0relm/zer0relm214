@@ -1,28 +1,34 @@
--- duck_package.adb gives Duck-related definitions
---  by over-riding Bird-related definitions.
+-- duck_package.ads gives Duck-related declarations,
 --
+--  and derives Duck from Bird.
 -- Begun by: Dr. Adams, CS 214 at Calvin College.
--- Completed by:
--- Date:
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 05/05/2020
 ---------------------------------------------------
 
-with Ada.Text_IO;
-use Ada.Text_IO;
+with Bird_Package; use Bird_Package;
 
-package body Duck_Package is
+package Duck_Package is
+
+  type Duck_Type is new Bird_Type with private;
 
  ----------------------------------------------------
  -- A Duck's Call (Over-rides Bird.Call())          -
  -- Receive: A_Duck, a Duck_Type.                   -
  -- Return: "Quack!"                                -
  ----------------------------------------------------
-
+  function Call(A_Duck : in Duck_Type) return String;
 
  ------------------------------------------------------------
  -- Determine type of a Duck (Over-rides Bird.Type_Name()) -
  -- Receive: A_Duck, a Duck_Type.                          -
  -- Return: "Duck".                                        -
  -----------------------------------------------------------
+  function Type_Name(A_Duck : in Duck_Type) return String;
 
-
+private
+    type Duck_Type is new Bird_Type with
+          record
+            null;
+          end record;
 end Duck_Package;

@@ -1,14 +1,15 @@
--- owl_package.ads gives Owl-related declarations,
---  and derives Owl from Bird.
+-- owl_package.adb gives Owl-related definitions
+--  by over-riding Bird-related definitions.
 --
 -- Begun by: Dr. Adams, CS 214 at Calvin College.
--- Completed by:
--- Date:
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 05/05/2020
 ---------------------------------------------------
 
-with Bird_Package; use Bird_Package;
+with Ada.Text_IO;
+use Ada.Text_IO;
 
-package Owl_Package is
+package body Owl_Package is
 
 
  ----------------------------------------------------
@@ -16,7 +17,10 @@ package Owl_Package is
  -- Receive: An_Owl, an Owl_Type.                   -
  -- Return: "Whoo!"                                 -
  ----------------------------------------------------
-
+  function Call(An_Owl : in Owl_Type) return String is
+     begin
+      return "Whoo!";
+     end Call;
 
  -----------------------------------------------------
  -- Determine type of a Owl                          -
@@ -24,8 +28,9 @@ package Owl_Package is
  -- Receive: An_Owl, an Owl_Type.                    -
  -- Return: "Owl".                                   -
  -----------------------------------------------------
-
-private
-
+  function Type_Name(An_Owl : in Owl_Type) return String is
+     begin
+      return "Owl";
+     end Type_Name;
 
 end Owl_Package;

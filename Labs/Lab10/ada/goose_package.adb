@@ -1,33 +1,33 @@
--- goose_package.ads gives Goose-related declarations,
+-- goose_package.adb gives Goose-related definitions
+--  by over-riding Bird-related definitions.
 --
---  and derives Goose from Bird.
 -- Begun by: Dr. Adams, CS 214 at Calvin College.
--- Completed by:
--- Date:
+-- Completed by: AJ Vrieland (ajv234)
+-- Date: 05/05/2020
 ---------------------------------------------------
 
-with Bird_Package; use Bird_Package;
-
-package Goose_Package is
-
- type Goose_Type is new Bird_Type with private;
-
+package body Goose_Package is
 
  ----------------------------------------------------
  -- A Goose's Call (Over-rides Bird.Call())         -
- -- Receive: A_Goose, a Goose.                      -
+ -- Receive: A_Goose, a Goose_Type.                 -
  -- Return: "Honk!"                                 -
  ----------------------------------------------------
+ function Call(A_Goose : in Goose_Type) return String is
+     begin
+      return "Honk!";
+     end Call;
 
 
  -----------------------------------------------------
  -- Determine type of a Goose                        -
  -- (Over-rides Bird.Type_Name())                    -
- -- Receive: A_Goose, a Goose.                       -
+ -- Receive: A_Goose, a Goose_Type.                  -
  -- Return: "Goose".                                 -
  -----------------------------------------------------
-
-private
-
+ function Type_Name(A_Goose : in Goose_Type) return String is
+     begin
+      return "Goose";
+     end Type_Name;
 
 end Goose_Package;
