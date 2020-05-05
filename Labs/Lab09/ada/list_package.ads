@@ -49,7 +49,7 @@ package List_Package is
   -- Output: the values in aList.     -
   -------------------------------------
 
-  -- replace this line with the declaration of Put()
+  procedure Put(A_List : in List);
 
   ---------------------------------------
   -- Find the maximum value in a list.  -
@@ -57,7 +57,7 @@ package List_Package is
   -- Return: the maximum value in aList.-
   ---------------------------------------
 
-  -- replace this line with the declaration of Max()
+  function Max(A_List : in List) return Integer;
 
  private
    -- replace this line with a forward-dec of List_Node
@@ -68,13 +68,13 @@ package List_Package is
    type List_Node is
           record
            Its_Value : Integer;
-           Its_Next : Node_Ptr; 
+           Its_Next : Node_Ptr;
           end record;
    -- replace this line with a full dec of List
    type List is
         record
-          Its_First : List_Node;
-          Its_Last : List_Node;
+          Its_First : Node_Ptr;
+          Its_Last : Node_Ptr;
           its_Length : Integer;
         end record;
 

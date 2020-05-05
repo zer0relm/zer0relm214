@@ -5,20 +5,27 @@
 # Date:
 #######################################################
 
-require 'test/unit/assertions'
-include Test::Unit::Assertions
+#require 'test/unit/assertions'
+#include Test::Unit::Assertions
 
 class List
 
    # initialize a List to be empty
    # Postcondition: first == nil and last == nil and length == 0
-
+   def initialize()
+     @first == nil
+     @last == nil
+     @length == 0
+   end
    # Replace this line with a List constructor definition
 
 
    # create reader method for length
 
    # Replace this line with a statement to define a 'length' reader method
+   def length()
+     return @length
+   end
 
 
    # Am I empty?
@@ -26,7 +33,7 @@ class List
    def empty?
       @length == 0
    end
-  
+
    # append a value to me
    # Receive: value, the item to be appended
    # Postcondition: my last item is value and
@@ -37,7 +44,7 @@ class List
       if empty?
          @first = newNode
       else
-         @last.next = newNode      
+         @last.next = newNode
       end
 
       @last = newNode
@@ -60,6 +67,14 @@ class List
 
    # Replace this line with a declaration for class Node
    #  (and its methods)
+   class Node
+     def initialize(item, link)
+      @value = item
+      @next = link
+    end
+
+    attr_reader :value
+    attr_accessor :next
+   end
 
 end
-
