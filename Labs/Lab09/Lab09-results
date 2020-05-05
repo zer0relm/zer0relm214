@@ -1,0 +1,383 @@
+Script started on 2020-05-04 16:34:26-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="188" LINES="27"]
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/ada[01;32m[zer0relm@AJ-Blade[01;37m ada[01;32m]$[00m cat Max.ada list_package.adb list_package.ads
+cat: Max.ada: No such file or directory
+-- list_package.adb defines Ada linked list operations.
+--
+-- Begun by: Dr. Adams, CS 214 at Calvin College.
+-- Completed by: AJ Vrieland
+-- Date: 05/04/2020
+-------------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use Ada.Text_IO, Ada.Integer_Text_IO;
+
+package body List_Package is
+
+  -----------------------------------------------------
+  -- Initialize a list                                -
+  -- Receive: aList, a List.                          -
+  -- Pre: aList is uninitialized.                     -
+  -- Post: aList%itsFirst == aList%itsLast == NULL && -
+  --        aList%itsLength == 0.                     -
+  -----------------------------------------------------
+  procedure Init(A_List : out List) is
+  begin
+    A_List.Its_First := null;
+    A_List.Its_Last := null;
+    A_List.Its_Length := 0;
+  end Init;
+
+  ------------------------------------------------
+  -- Is a list empty?                            -
+  -- Receive: aList, a List.                     -
+  -- Return: true, iff aList contains no values. -
+  ------------------------------------------------
+  function Empty(A_List : in List) return Boolean is
+  begin
+    return A_List.Its_Length = 0;
+  end Empty;
+
+  -------------------------------------
+  -- How many values are in a list?   -
+  -- Receive: aList, a List.          -
+  -- Return: aList%itsLength.         -
+  -------------------------------------
+  function Length(A_List : in List) return Integer is
+  begin
+    return A_List.Its_Length;
+  end Length;
+
+  ----------------------------------------
+  -- Append a value to a list.           -
+  -- Receive: aValue, an integer,        -
+  -- Passback: aList, containing aValue. -
+  ----------------------------------------
+  procedure Append(A_Value : in Integer; A_List : in out List) is
+    Temp_Ptr : constant Node_Ptr := new List_Node;
+  begin
+    Temp_Ptr.Its_Value := A_Value;
+    Temp_Ptr.Its_Next := null;
+
+    if A_List.Its_Length = 0 then
+       A_List.Its_First := Temp_Ptr;
+    else
+       A_List.Its_Last.Its_Next := Temp_Ptr;
+    end if;
+
+    A_List.Its_Last := Temp_Ptr;
+
+    A_List.Its_Length := A_List.Its_Length + 1;
+  end Append;
+
+  -------------------------------------
+  -- Display the values in a list.    -
+  -- Receive: aList, a List.          -
+  -- Output: the values in aList.     -
+  -------------------------------------
+
+  procedure Put(A_List : in List) is
+    Temp_Ptr : Node_Ptr := A_List.Its_First;
+  begin
+    while Temp_Ptr /= null loop
+       Put(' '); Put(Temp_Ptr.Its_Value);
+       Temp_Ptr := Temp_Ptr.Its_Next;
+    end loop;
+  end Put;
+  ---------------------------------------
+  -- Find the maximum value in a list.  -
+  -- Receive: aList, a List.            -
+  -- Return: the maximum value in aList.-
+  ---------------------------------------
+
+  function Max(A_List : in List) return Integer is
+    Temp_Ptr : Node_Ptr := A_List.Its_First;
+    Temp_max : Integer := 0;
+  begin
+    while Temp_Ptr /= null loop
+      if Temp_Ptr.Its_Value > Temp_max then
+        Temp_max := Temp_Ptr.Its_Value;
+      end if;
+      Temp_Ptr := Temp_Ptr.Its_Next;
+    end loop;
+    return Temp_max;
+  end Max;
+
+
+end List_Package;
+-- list_package.ads declares an Ada linked list and its operations.
+--
+-- Begun by: Dr. Adams, CS 214 at Calvin College.
+-- Completed by:
+-- Date:
+------------------------------------------------------------------
+
+package List_Package is
+
+  -- the list-type itself (public)
+  type List is private;
+
+  -----------------------------------------------------
+  -- Initialize a list                                -
+  -- Receive: aList, a List.                          -
+  -- Pre: aList is uninitialized.                     -
+  -- Post: aList%itsFirst == aList%itsLast == NULL && -
+  --        aList%itsLength == 0.                     -
+  -----------------------------------------------------
+  procedure Init(A_List: out List);
+
+
+  ------------------------------------------------
+  -- Is a list empty?                            -
+  -- Receive: aList, a List.                     -
+  -- Return: true, iff aList contains no values. -
+  ------------------------------------------------
+  function Empty(A_List: in List) return Boolean;
+
+  -------------------------------------
+  -- How many values are in a list?   -
+  -- Receive: aList, a List.          -
+  -- Return: aList%itsLength.         -
+  -------------------------------------
+  function Length(A_List : in List) return Integer;
+
+
+  ----------------------------------------
+  -- Append a value to a list.           -
+  -- Receive: aValue, an integer,        -
+  -- Passback: aList, containing aValue. -
+  ----------------------------------------
+  procedure Append(A_Value : in Integer; A_List: in out List);
+
+
+  -------------------------------------
+  -- Display the values in a list.    -
+  -- Receive: aList, a List.          -
+  -- Output: the values in aList.     -
+  -------------------------------------
+
+  procedure Put(A_List : in List);
+
+  ---------------------------------------
+  -- Find the maximum value in a list.  -
+  -- Receive: aList, a List.            -
+  -- Return: the maximum value in aList.-
+  ---------------------------------------
+
+  function Max(A_List : in List) return Integer;
+
+ private
+   -- replace this line with a forward-dec of List_Node
+   type List_Node;
+   -- replace this line with a dec of Node_Ptr
+   type Node_Ptr is access List_Node;
+   -- replace this line with a full dec of List_Node
+   type List_Node is
+          record
+           Its_Value : Integer;
+           Its_Next : Node_Ptr;
+          end record;
+   -- replace this line with a full dec of List
+   type List is
+        record
+          Its_First : Node_Ptr;
+          Its_Last : Node_Ptr;
+          its_Length : Integer;
+        end record;
+
+end List_Package;
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/ada[01;32m[zer0relm@AJ-Blade[01;37m ada[01;32m]$[00m .[Kmake max
+gnatbind  max.ali
+gnatlink  max.ali -o adaMax
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/ada[01;32m[zer0relm@AJ-Blade[01;37m ada[01;32m]$[00m ./adaMax
+          99          88          77          66          55
+          55          66          77          88          99
+          55          77          99          88          66
+The maximum value in list 1 is          99
+The maximum value in list 2 is          99
+The maximum value in list 3 is          99
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/ada[01;32m[zer0relm@AJ-Blade[01;37m ada[01;32m]$[00m exit
+
+Script done on 2020-05-04 16:34:56-04:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2020-05-04 15:50:48-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="188" LINES="27"]
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/java[01;32m[zer0relm@AJ-Blade[01;37m java[01;32m]$[00m cs[Kat m[KMaz[Kx.java
+/* Max.java finds the maximum values in Java linked lists.
+ *
+ * Begun by: Dr. Adams, CS 214 at Calvin College.
+ * Completed by: AJ Vrieland (ajv234)
+ * Date: 05/04/2020
+ */
+
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.Collections;
+
+public class Max {
+
+  public static void main(String [] args) {
+    // define list1, list2, list3 here ...
+    LinkedList<Integer> list1 = new LinkedList<Integer>();
+    LinkedList<Integer> list2 = new LinkedList<Integer>();
+    LinkedList<Integer> list3 = new LinkedList<Integer>();
+
+
+    list1.add(99);    // 99, 88, 77, 66, 55
+    list1.add(88);    // max is first
+    list1.add(77);
+    list1.add(66);
+    list1.add(55);
+
+    list2.add(55);    // 55, 66, 77, 88, 99
+    list2.add(66);    // max is last
+    list2.add(77);
+    list2.add(88);
+    list2.add(99);
+
+    list3.add(55);    // 55, 77, 99, 88, 66
+    list3.add(77);    // max is in the middle
+    list3.add(99);
+    list3.add(88);
+    list3.add(66);
+
+    print(list1);
+    print(list2);
+    print(list3);
+
+   // display maxima of the 3 lists...
+    System.out.println("Max of List1 is " + Collections.max(list1));
+    System.out.println("Max of List2 is " + Collections.max(list2));
+    System.out.println("Max of List3 is " + Collections.max(list3));
+  }
+
+  /** print() displays a LinkedList on the console.
+   *
+   * @param: aList, a LinkedList<Integer>
+   *
+   * Postcondition: the Integer values in aList
+   *                 have been displayed to System.out,
+   *                 separated by spaces.
+   */
+  // replace this line with the definition of print().
+  public static void print(LinkedList<Integer> aList)
+   {
+     Iterator<Integer> listIterator = aList.iterator();
+     while (listIterator.hasNext()){
+	    System.out.print(listIterator.next() + " ");
+	   }
+	   System.out.print('\n');
+   }
+
+}
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/java[01;32m[zer0relm@AJ-Blade[01;37m java[01;32m]$[00m javac -dper[K[K[Keprecation Max.java
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/java[01;32m[zer0relm@AJ-Blade[01;37m java[01;32m]$[00m java Max
+99 88 77 66 55
+55 66 77 88 99
+55 77 99 88 66
+Max of List1 is 99
+Max of List2 is 99
+Max of List3 is 99
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/java[01;32m[zer0relm@AJ-Blade[01;37m java[01;32m]$[00m exit
+
+Script done on 2020-05-04 15:51:22-04:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2020-05-04 19:07:26-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="188" LINES="27"]
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/clojure[01;32m[zer0relm@AJ-Blade[01;37m clojure[01;32m]$[00m cat listOps.clj [K[K[K[K[K[K[K[K[K[K[K[Ksc[Krc/listOps.clj src/mas[Kx.clj
+;; listOps.clj is a Clojure "module" for list operations.
+;;
+;; Begun by: Prof. Adams, CS 214 at Calvin College.
+;; Completed by: AJ Vrieland (ajv234)
+;; Date: 05/04/2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; maxOf2() finds the maximum of two values.
+;; Receive: val1, val2, two values.
+;; PRE: val1 and val2 can be compared using >.
+;; Return: the maximum of val1 and val2.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn maxOf2 [val1 val2]
+  (if (> val1 val2)      ; if val1 > val2
+    val1                 ;   return val1
+    val2                 ; else return val2
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; listMax() finds the maximum value in a list.
+;; Receive: aList, a list of values.
+;; PRE: aList is a list
+;;      values in aList can be compared using >.
+;; Return: the maximum value in aList.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn listMax [myList]
+  (if (list? myList)
+    (do
+      (def tempVal (first myList))
+      (if (<= (count myList) 1)
+      (first myList)
+      (maxOf2 tempVal (listMax (rest myList)))
+      )
+    )
+    (empty)
+  )
+)
+;; max.clj tests a function to search a list for its maximum value.
+;;
+;; Output: three lists, and
+;;          the results of calling a maxList() function on them.
+;;
+;; Usage: clojure -m max
+;;
+;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;; Completed by:
+;; Date:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns max)
+
+(load "listOps")                      ; load module
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Function -main tests function listMax().
+;; Output: the results of testing listMax() on various lists.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [
+      list1 '(99 88 77 66 55)        ; max is first value
+      list2 (list 55 66 77 88 99)    ; max is last value
+      list3 (list 55 77 99 88 66)    ; max is middle value
+      emptyList '()                  ; list is empty
+    ]
+
+    (println)
+    (println "list1: " list1)        ; print list1,
+    (println "list2: " list2)        ;   list2,
+    (println "list3: " list3)        ;   list3,
+    (println "empty: " emptyList)    ;   list3,
+    (println)                        ;   and their maxima
+    (println "The max value in list1 is: " (listMax list1))
+    (println "The max value in list2 is: " (listMax list2))
+    (println "The max value in list3 is: " (listMax list3))
+    (println)
+    (println "The max of an empty list is: " (listMax emptyList))
+    (println)
+  )
+)
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/clojure[01;32m[zer0relm@AJ-Blade[01;37m clojure[01;32m]$[00m cat[K[K[Kmake
+clojure -m max
+
+list1:  (99 88 77 66 55)
+list2:  (55 66 77 88 99)
+list3:  (55 77 99 88 66)
+empty:  ()
+
+The max value in list1 is:  99
+The max value in list2 is:  99
+The max value in list3 is:  99
+
+The max of an empty list is:  nil
+
+]0;zer0relm@AJ-Blade:~/cs214/Labs/Lab09/clojure[01;32m[zer0relm@AJ-Blade[01;37m clojure[01;32m]$[00m exit
+
+Script done on 2020-05-04 19:08:11-04:00 [COMMAND_EXIT_CODE="0"]

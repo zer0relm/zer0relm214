@@ -5,8 +5,8 @@
 # Date:
 #######################################################
 
-require 'test/unit/assertions'
-include Test::Unit::Assertions
+#require 'test/unit/assertions'
+#include Test::Unit::Assertions
 
 class List
 
@@ -57,7 +57,13 @@ class List
    # Postcondition: my items have been displayed to the screen
 
    # Replace this line with a definition for method 'print'
-   def 
+   def print
+        temp = @first
+        while !temp.nil?
+           printf " #{temp.value}"
+           temp = temp.next
+        end
+     end
 
 
    # find my maximum item
@@ -72,7 +78,7 @@ class List
      def initialize(item, link)
       @value = item
       @next = link
-    end
+     end
 
     attr_reader :value
     attr_accessor :next
