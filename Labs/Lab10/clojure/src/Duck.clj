@@ -1,11 +1,11 @@
 ;;;; Duck.clj provides a Duck "class".
-;;;; 
+;;;;
 ;;;; Begun by: Prof. Adams, for CS 214 at Calvin College.
-;;;; Completed by:
-;;;; Date:
+;;;; Completed by: AJ Vrieland (ajv234)
+;;;; Date: 05/05/2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; bring in 'Bird' (to be used as superclass) 
+;; bring in 'Bird' (to be used as superclass)
 (load "Bird")
 
 ;; define 'Duck' as 'subclass' of Bird
@@ -38,4 +38,3 @@
 (defmethod getCall Duck [ _ ]
   "Quack!"
 )
-
