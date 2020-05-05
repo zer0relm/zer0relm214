@@ -5,8 +5,8 @@
 # Date:
 #######################################################
 
-#require 'test/unit/assertions'
-#include Test::Unit::Assertions
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 class List
 
@@ -57,6 +57,7 @@ class List
    # Postcondition: my items have been displayed to the screen
 
    # Replace this line with a definition for method 'print'
+   def 
 
 
    # find my maximum item
